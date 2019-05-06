@@ -1,3 +1,195 @@
-<p>
-  add-review works!
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <h3>Add a New Review</h3>
+    <hr />
+    <form [formGroup]="addReviewForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="schoolName">School Name</label>
+            <input
+              type="text"
+              id="schoolName"
+              class="form-control"
+              formControlName="schoolName"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              class="form-control"
+              formControlName="location"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="generalDescription">General Description</label>
+            <input
+              type="text"
+              id="generalDescription"
+              class="form-control"
+              formControlName="generalDescription"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="public">
+              <input
+                type="radio"
+                value="Public"
+                id="generalDescription"
+                class="form-control"
+                formControlName="type"
+              />
+              <span>Public</span>
+            </label>
+            <label for="private">
+              <input
+                type="radio"
+                value="Private"
+                id="generalDescription"
+                class="form-control"
+                formControlName="type"
+              />
+              <span>Private</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="management">Management</label>
+            <input
+              type="text"
+              id="management"
+              class="form-control"
+              formControlName="management"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="pupilsBehaviour">Pupils' Behaviour</label>
+            <input
+              type="text"
+              id="pupilsBehaviour"
+              class="form-control"
+              formControlName="pupilsBehaviour"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="workload">Workload</label>
+            <input
+              type="text"
+              id="workload"
+              class="form-control"
+              formControlName="workload"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="workingHours">Working Hours</label>
+            <input
+              type="text"
+              id="workingHours"
+              class="form-control"
+              formControlName="workingHours"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="pressure">Pressure</label>
+            <input
+              type="text"
+              id="pressure"
+              class="form-control"
+              formControlName="pressure"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="staff">Staff</label>
+            <input
+              type="text"
+              id="staff"
+              class="form-control"
+              formControlName="staff"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="infrastructures">Infrastructures</label>
+            <input
+              type="text"
+              id="infrastructures"
+              class="form-control"
+              formControlName="infrastructures"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="policies">Policies</label>
+            <input
+              type="text"
+              id="policies"
+              class="form-control"
+              formControlName="policies"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success">Save</button>
+          <button class="btn btn-danger">Discard</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
