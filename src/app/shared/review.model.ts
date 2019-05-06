@@ -1,6 +1,5 @@
 export class Review {
-  public id: number;
-  public name: string;
+  public schoolName: string;
   public location: string;
   public generalDescription: string;
   public management: string;
@@ -14,8 +13,7 @@ export class Review {
   public policies: string;
 
   constructor(
-    id: number,
-    name: string,
+    schoolName: string,
     location: string,
     generalDescription: string,
     management: string,
@@ -28,8 +26,7 @@ export class Review {
     infrastructures: string,
     policies: string
   ) {
-    this.id = id;
-    this.name = name;
+    this.schoolName = schoolName;
     this.location = location;
     this.generalDescription = generalDescription;
     this.management = management;

@@ -3,7 +3,6 @@ import { Review } from "../shared/review.model";
 export class AddReviewService {
   private reviews: Review[] = [
     new Review(
-      1,
       "London",
       "Mossbourne Community Academy",
       "Big blue strict school",
@@ -18,7 +17,6 @@ export class AddReviewService {
       "Very strict policies"
     ),
     new Review(
-      2,
       "Manchester",
       "St. James School",
       "Small school",
@@ -36,5 +34,11 @@ export class AddReviewService {
 
   getReviews() {
     return this.reviews.slice();
+  }
+
+  addNewReview(review: Review) {
+    console.log("this is the review", review);
+    this.reviews.push(review);
+    console.log(this.reviews);
   }
 }
