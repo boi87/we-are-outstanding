@@ -3,8 +3,8 @@ import { Review } from "../shared/review.model";
 export class AddReviewService {
   private reviews: Review[] = [
     new Review(
-      "London",
       "Mossbourne Community Academy",
+      "London",
       "Big blue strict school",
       "Management sucks",
       "Pupils' behaviour is bad",
@@ -17,8 +17,8 @@ export class AddReviewService {
       "Very strict policies"
     ),
     new Review(
-      "Manchester",
       "St. James School",
+      "Manchester",
       "Small school",
       "Management great",
       "Pupils' behaviour is good",

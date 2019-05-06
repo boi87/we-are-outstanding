@@ -1,3 +1,7 @@
-<p>
-  reviews works!
-</p>
+<div class="row" *ngFor="let reviewEl of reviews; let i = index">
+  <div class="col-md-12">Reviews</div>
+  <ul>
+    <li>{{ reviewEl.schoolName }}</li>
+  </ul>
+</div>
+<!--  let i = index" [review]="reviewEl" [index]="i" -->
