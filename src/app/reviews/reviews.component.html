@@ -1,7 +1,10 @@
 <div class="row" *ngFor="let reviewEl of reviews; let i = index">
   <div class="col-md-12">Reviews</div>
   <ul>
-    <li>{{ reviewEl.schoolName }}</li>
+    <li>
+      <a [routerLink]="[reviewEl.schoolName]">{{ reviewEl.schoolName }}</a>
+    </li>
   </ul>
 </div>
+<router-outlet></router-outlet>
 <!--  let i = index" [review]="reviewEl" [index]="i" -->
