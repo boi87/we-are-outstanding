@@ -1,7 +1,11 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Review } from '../shared/review.model';
 import Swal from 'sweetalert2';
 
+@Injectable()
 export class AddReviewService {
+  constructor(private http: HttpClient) {}
   private reviews: Review[] = [
     new Review(
       'MossbourneCommunityAcademy',
@@ -41,6 +45,11 @@ export class AddReviewService {
     console.log('this is the review', review);
     this.reviews.push(review);
     console.log(this.reviews);
+    this.http
+      .post('https://weareoutstanding-6c621.firebaseio.com/posts.json', review)
+      .subscribe(reportData => {
+        console.log(reportData);
+      });
 
     Swal.fire(
       'Your review has been saved!',

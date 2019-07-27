@@ -1,14 +1,15 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./header/header.component";
-import { AddReviewComponent } from "./add-review/add-review.component";
-import { ReviewsComponent } from "./reviews/reviews.component";
-import { AddReviewService } from "./add-review/addReview.service";
-import { MatButtonModule, MatCheckboxModule } from "@angular/material";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { AddReviewComponent } from './add-review/add-review.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { AddReviewService } from './add-review/addReview.service';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ReviewDetailComponent } from './reviews/review-detail/review-detail.com
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     // MatButtonModule,
     // MatCheckboxModule
   ],
