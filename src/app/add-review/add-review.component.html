@@ -2,7 +2,10 @@
   <div class="col-md-10">
     <h3>Add a New Review</h3>
     <hr />
-    <form [formGroup]="addReviewForm" (ngSubmit)="onSubmit()">
+    <form
+      [formGroup]="addReviewForm"
+      (ngSubmit)="onSubmit(); addReviewForm.reset()"
+    >
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">

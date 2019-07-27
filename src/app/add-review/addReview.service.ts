@@ -3,7 +3,7 @@ import { Review } from "../shared/review.model";
 export class AddReviewService {
   private reviews: Review[] = [
     new Review(
-      "Mossbourne Community Academy",
+      "MossbourneCommunityAcademy",
       "London",
       "Big blue strict school",
       "Management sucks",
