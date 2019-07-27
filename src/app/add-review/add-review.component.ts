@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   FormArray,
   FormControl,
   FormGroup,
   Validators,
   NgForm
-} from "@angular/forms";
-import { AddReviewService } from "./addReview.service";
-import { Review } from "../shared/review.model";
+} from '@angular/forms';
+import { AddReviewService } from './addReview.service';
+import { Review } from '../shared/review.model';
 
 @Component({
-  selector: "app-add-review",
-  templateUrl: "./add-review.component.html",
-  styleUrls: ["./add-review.component.css"]
+  selector: 'app-add-review',
+  templateUrl: './add-review.component.html',
+  styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent implements OnInit {
   id: number;
@@ -47,18 +47,18 @@ export class AddReviewComponent implements OnInit {
   }
 
   private initForm() {
-    let schoolName = "";
-    let location = "";
-    let generalDescription = "";
-    let management = "";
-    let pupilsBehaviour = "";
-    let type = "";
-    let workload = "";
-    let workingHours = "";
-    let pressure = "";
-    let staff = "";
-    let infrastructures = "";
-    let policies = "";
+    let schoolName = '';
+    let location = '';
+    let generalDescription = '';
+    let management = '';
+    let pupilsBehaviour = '';
+    let type = '';
+    let workload = '';
+    let workingHours = '';
+    let pressure = '';
+    let staff = '';
+    let infrastructures = '';
+    let policies = '';
 
     this.addReviewForm = new FormGroup({
       schoolName: new FormControl(schoolName, Validators.required),
