@@ -1,0 +1,10 @@
+.matInput {
+  border: none;
+  box-shadow: none;
+}
+
+.form-item-box {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
