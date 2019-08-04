@@ -77,5 +77,12 @@ export class AddReviewComponent implements OnInit {
       infrastructures: new FormControl(infrastructures, Validators.required),
       policies: new FormControl(policies, Validators.required)
     });
+
+    this.addReviewForm.get('type').valueChanges.subscribe(val => {
+      console.log(val);
+    });
+    this.addReviewForm.get('location').valueChanges.subscribe(val => {
+      console.log(val);
+    });
   }
 }

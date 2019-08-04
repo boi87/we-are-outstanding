@@ -6,7 +6,7 @@
       [formGroup]="addReviewForm"
       (ngSubmit)="onSubmit(); addReviewForm.reset()"
     >
-      <div class="row form-item-box">
+      <div class="form-item-box">
         <div class="col-md-6">
           <div class="form-group">
             <label class="bmd-label-floating" for="schoolName"
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div class="row form-item-box">
+      <div class="form-item-box2">
         <div class="col-md-6">
           <div class="form-group">
             <label for="location" class="bmd-label-floating">Location</label>
@@ -38,176 +38,175 @@
         </div>
       </div>
 
-      <div class="row form-item-box">
+      <div class="form-item-box2">
         <div class="col-md-12">
-          <div class="radio">
-            <label for="public">
-              <input
-                type="radio"
-                value="Public"
+          <div class="radio" style="margin-top: 12px;">
+            <input
+              type="radio"
+              value="Public"
+              id="Public"
+              formControlName="type"
+              name="type"
+            />
+            <label for="public" style="padding-left: 7px;">Public</label>
+
+            <input
+              type="radio"
+              value="Private"
+              id="Private"
+              formControlName="type"
+              name="type"
+              style="margin-left: 2rem;"
+            />
+            <label for="private" style="padding-left: 7px;">Private</label>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap;">
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="generalDescription"
+                >General Description</label
+              >
+              <textarea
+                type="text"
                 id="generalDescription"
-                formControlName="type"
-                name="type"
-              />
-              <span>Public</span>
-            </label>
-
-            <label for="private" style="margin-left: 3rem;">
-              <input
-                type="radio"
-                value="Private"
-                id="generalDescription"
-                formControlName="type"
-                name="type"
-              />
-              <span>Private</span>
-            </label>
+                class="form-control matInput"
+                formControlName="generalDescription"
+                rows="6"
+              >
+              </textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="generalDescription"
-              >General Description</label
-            >
-            <textarea
-              type="text"
-              id="generalDescription"
-              class="form-control matInput"
-              formControlName="generalDescription"
-              rows="6"
-            >
-            </textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="management"
+                >Management</label
+              >
+              <textarea
+                type="text"
+                id="management"
+                class="form-control matInput"
+                formControlName="management"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="management"
-              >Management</label
-            >
-            <textarea
-              type="text"
-              id="management"
-              class="form-control matInput"
-              formControlName="management"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="pupilsBehaviour"
+                >Pupils' Behaviour</label
+              >
+              <textarea
+                type="text"
+                id="pupilsBehaviour"
+                class="form-control matInput"
+                formControlName="pupilsBehaviour"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="pupilsBehaviour"
-              >Pupils' Behaviour</label
-            >
-            <textarea
-              type="text"
-              id="pupilsBehaviour"
-              class="form-control matInput"
-              formControlName="pupilsBehaviour"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="workload">Workload</label>
+              <textarea
+                type="text"
+                id="workload"
+                class="form-control matInput"
+                formControlName="workload"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="workload">Workload</label>
-            <textarea
-              type="text"
-              id="workload"
-              class="form-control matInput"
-              formControlName="workload"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="workingHours"
+                >Working Hours</label
+              >
+              <textarea
+                type="text"
+                id="workingHours"
+                class="form-control matInput"
+                formControlName="workingHours"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="workingHours"
-              >Working Hours</label
-            >
-            <textarea
-              type="text"
-              id="workingHours"
-              class="form-control matInput"
-              formControlName="workingHours"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="pressure">Pressure</label>
+              <textarea
+                type="text"
+                id="pressure"
+                class="form-control matInput"
+                formControlName="pressure"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="pressure">Pressure</label>
-            <textarea
-              type="text"
-              id="pressure"
-              class="form-control matInput"
-              formControlName="pressure"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="staff">Staff</label>
+              <textarea
+                type="text"
+                id="staff"
+                class="form-control matInput"
+                formControlName="staff"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="staff">Staff</label>
-            <textarea
-              type="text"
-              id="staff"
-              class="form-control matInput"
-              formControlName="staff"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="infrastructures"
+                >Infrastructures</label
+              >
+              <textarea
+                type="text"
+                id="infrastructures"
+                class="form-control matInput"
+                formControlName="infrastructures"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="infrastructures"
-              >Infrastructures</label
-            >
-            <textarea
-              type="text"
-              id="infrastructures"
-              class="form-control matInput"
-              formControlName="infrastructures"
-              rows="6"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="row form-item-box">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="bmd-label-floating" for="policies">Policies</label>
-            <textarea
-              type="text"
-              id="policies"
-              class="form-control matInput"
-              formControlName="policies"
-              rows="6"
-            ></textarea>
+        <div class="form-item-box2">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="policies">Policies</label>
+              <textarea
+                type="text"
+                id="policies"
+                class="form-control matInput"
+                formControlName="policies"
+                rows="6"
+              ></textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -218,6 +217,7 @@
             class="btn btn-success"
             type="submit"
             [disabled]="!addReviewForm.valid"
+            style="margin-right: 2rem;"
           >
             Save
           </button>
