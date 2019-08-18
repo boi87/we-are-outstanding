@@ -86,14 +86,17 @@ export class AddReviewComponent implements OnInit {
 
   onFilterNames(event) {
     const filterValue = event.target.value.toLowerCase();
-    console.log(
-      this.data.filter(x => x.name.toLowerCase().includes(filterValue))
+    // console.log(
+    //   this.data.filter(x => x.name.toLowerCase().includes(filterValue))
+    // );
+    // this.data.filter(x => {
+    //   if (x.name.toLowerCase().includes(filterValue)) {
+    //     this.filtered.push(x);
+    //   }
+    // });
+    this.filtered = this.data.filter(x =>
+      x.name.toLowerCase().includes(filterValue)
     );
-    this.data.filter(x => {
-      if (x.name.toLowerCase().includes(filterValue)) {
-        this.filtered.push(x);
-      }
-    });
     console.log(this.filtered);
     return this.filtered;
   }

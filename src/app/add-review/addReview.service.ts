@@ -38,15 +38,6 @@ export class AddReviewService {
     return this.reviews.slice();
   }
 
-  filterNames(value: string) {
-    // console.log(value);
-    const filterValue = value.toLowerCase();
-    console.log(
-      schoolData.filter(x => x.name.toLowerCase().includes(filterValue))
-    );
-    return schoolData.filter(x => x.name.includes(filterValue));
-  }
-
   addNewReview(review: Review) {
     console.log('this is the review', review);
     this.reviews.push(review);
