@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AddReviewService } from './addReview.service';
 import { Review } from '../shared/review.model';
+import schoolData from '../../../schools-data/school-data.json';
 
 @Component({
   selector: 'app-add-review',
@@ -18,11 +19,13 @@ export class AddReviewComponent implements OnInit {
   id: number;
   addReviewForm: FormGroup;
   editMode = false;
+  data = [];
 
-  constructor(private reviewService: AddReviewService) {}
+  constructor(private addReviewService: AddReviewService) {}
 
   ngOnInit() {
     this.initForm();
+    this.data = schoolData;
   }
 
   onSubmit() {
@@ -42,7 +45,7 @@ export class AddReviewComponent implements OnInit {
       value.infrastructures,
       value.policies
     );
-    this.reviewService.addNewReview(newReview);
+    this.addReviewService.addNewReview(newReview);
     console.log(value);
   }
 
@@ -78,11 +81,16 @@ export class AddReviewComponent implements OnInit {
       policies: new FormControl(policies, Validators.required)
     });
 
-    this.addReviewForm.get('type').valueChanges.subscribe(val => {
-      console.log(val);
-    });
-    this.addReviewForm.get('location').valueChanges.subscribe(val => {
-      console.log(val);
-    });
+    // this.addReviewForm.get('type').valueChanges.subscribe(val => {
+    //   console.log(val);
+    // });
+    // this.addReviewForm.get('location').valueChanges.subscribe(val => {
+    //   console.log(val);
+    // });
+  }
+
+  onFilterNames(event) {
+    // console.log(event.target.value);
+    return this.addReviewService.filterNames(event.target.value);
   }
 }

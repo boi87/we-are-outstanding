@@ -1,6 +1,6 @@
 import { Review } from '../shared/review.model';
 import Swal from 'sweetalert2';
-import data from '../../../schools-data/school-data.json';
+import schoolData from '../../../schools-data/school-data.json';
 
 export class AddReviewService {
   private reviews: Review[] = [
@@ -38,9 +38,13 @@ export class AddReviewService {
     return this.reviews.slice();
   }
 
-  getNames() {
-    const word = data[0].name;
-    console.log(word);
+  filterNames(value) {
+    console.log(value);
+    const filterValue = value.toLowerCase();
+    console.log(
+      schoolData.filter(x => x.name.toLowerCase().includes(filterValue))
+    );
+    return schoolData.map(x => x.name.includes(filterValue));
   }
 
   addNewReview(review: Review) {

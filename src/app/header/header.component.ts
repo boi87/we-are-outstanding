@@ -16,8 +16,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.reviews = this.addReviewService.getReviews();
   }
-
-  onGetNames() {
-    return this.addReviewService.getNames();
-  }
 }
