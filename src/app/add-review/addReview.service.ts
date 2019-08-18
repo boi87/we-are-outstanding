@@ -1,5 +1,6 @@
 import { Review } from '../shared/review.model';
 import Swal from 'sweetalert2';
+import data from '../../../schools-data/school-data.json';
 
 export class AddReviewService {
   private reviews: Review[] = [
@@ -35,6 +36,11 @@ export class AddReviewService {
 
   getReviews() {
     return this.reviews.slice();
+  }
+
+  getNames() {
+    const word = data[0].name;
+    console.log(word);
   }
 
   addNewReview(review: Review) {
