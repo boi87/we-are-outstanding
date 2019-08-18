@@ -20,14 +20,14 @@ export class AddReviewComponent implements OnInit {
   addReviewForm: FormGroup;
   editMode = false;
   data: { name: string; address: string; postcode: string }[];
-  length: number;
+  filtered: { name: string; address: string; postcode: string }[];
 
   constructor(private addReviewService: AddReviewService) {}
 
   ngOnInit() {
     this.initForm();
     this.data = schoolData;
-    length = 0;
+    this.filtered = [];
   }
 
   onSubmit() {
@@ -89,9 +89,12 @@ export class AddReviewComponent implements OnInit {
     console.log(
       this.data.filter(x => x.name.toLowerCase().includes(filterValue))
     );
-    this.length = this.data.length;
-    return this.data.filter(x => x.name.toLowerCase().includes(filterValue));
-
-    console.log(this.data);
+    this.data.filter(x => {
+      if (x.name.toLowerCase().includes(filterValue)) {
+        this.filtered.push(x);
+      }
+    });
+    console.log(this.filtered);
+    return this.filtered;
   }
 }
