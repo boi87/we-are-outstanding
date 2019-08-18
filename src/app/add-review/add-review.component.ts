@@ -19,13 +19,15 @@ export class AddReviewComponent implements OnInit {
   id: number;
   addReviewForm: FormGroup;
   editMode = false;
-  data = [];
+  data: { name: string; address: string; postcode: string }[];
+  length: number;
 
   constructor(private addReviewService: AddReviewService) {}
 
   ngOnInit() {
     this.initForm();
     this.data = schoolData;
+    length = 0;
   }
 
   onSubmit() {
@@ -80,17 +82,16 @@ export class AddReviewComponent implements OnInit {
       infrastructures: new FormControl(infrastructures, Validators.required),
       policies: new FormControl(policies, Validators.required)
     });
-
-    // this.addReviewForm.get('type').valueChanges.subscribe(val => {
-    //   console.log(val);
-    // });
-    // this.addReviewForm.get('location').valueChanges.subscribe(val => {
-    //   console.log(val);
-    // });
   }
 
   onFilterNames(event) {
-    // console.log(event.target.value);
-    return this.addReviewService.filterNames(event.target.value);
+    const filterValue = event.target.value.toLowerCase();
+    console.log(
+      this.data.filter(x => x.name.toLowerCase().includes(filterValue))
+    );
+    this.length = this.data.length;
+    return this.data.filter(x => x.name.toLowerCase().includes(filterValue));
+
+    console.log(this.data);
   }
 }
