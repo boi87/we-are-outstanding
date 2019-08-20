@@ -6,6 +6,7 @@
       [formGroup]="addReviewForm"
       (ngSubmit)="onSubmit(); addReviewForm.reset()"
     >
+      <div style="display: flex">
       <div class="form-item-box">
         <div class="col-md-6">
           <div class="form-group">
@@ -69,6 +70,8 @@
             <label for="private" style="padding-left: 7px;">Private</label>
           </div>
         </div>
+      </div>
+
       </div>
 
       <div style="display: flex; flex-wrap: wrap;">

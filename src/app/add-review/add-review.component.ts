@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AddReviewService} from './addReview.service';
 import {Review} from '../shared/review.model';
-// import schoolData from '../../../schools-data/school-data.json';
 
 @Component({
   selector: 'app-add-review',
@@ -20,7 +19,6 @@ export class AddReviewComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.data = schoolData;
     this.filtered = [];
   }
 
@@ -46,18 +44,18 @@ export class AddReviewComponent implements OnInit {
   }
 
   private initForm() {
-    let schoolName = '';
-    let location = '';
-    let generalDescription = '';
-    let management = '';
-    let pupilsBehaviour = '';
-    let type = '';
-    let workload = '';
-    let workingHours = '';
-    let pressure = '';
-    let staff = '';
-    let infrastructures = '';
-    let policies = '';
+    const schoolName = '';
+    const location = '';
+    const generalDescription = '';
+    const management = '';
+    const pupilsBehaviour = '';
+    const type = '';
+    const workload = '';
+    const workingHours = '';
+    const pressure = '';
+    const staff = '';
+    const infrastructures = '';
+    const policies = '';
 
     this.addReviewForm = new FormGroup({
       schoolName: new FormControl(schoolName, Validators.required),
