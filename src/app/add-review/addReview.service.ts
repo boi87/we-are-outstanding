@@ -1,6 +1,5 @@
 import { Review } from '../shared/review.model';
 import Swal from 'sweetalert2';
-import schoolData from '../../../schools-data/school-data.json';
 
 export class AddReviewService {
   private reviews: Review[] = [
