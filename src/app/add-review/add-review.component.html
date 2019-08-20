@@ -12,7 +12,7 @@
           style="width: 22rem;
       margin-right: 2rem;"
         >
-          <div class="col-md-6">
+          <div class="col-md-6" style="max-width: 100%;">
             <div class="form-group">
               <label class="bmd-label-floating" for="schoolName"
                 >School Name</label
@@ -26,18 +26,18 @@
                 (input)="onFilterNames($event)"
                 list="schools"
               />
-              <datalist *ngFor="let item of filtered" id="schools">
+              <!-- <datalist *ngFor="let item of filtered" id="schools">
                 <option [value]="item.name"
                   >{{ item.address }}, {{ item.postcode }}</option
                 >
-              </datalist>
+              </datalist> -->
               <p>{{ this.filtered.length }}</p>
             </div>
           </div>
         </div>
 
         <div class="form-item-box2" style="width: 22rem;">
-          <div class="col-md-6">
+          <div class="col-md-6" style="max-width: 100%;">
             <div class="form-group">
               <label for="location" class="bmd-label-floating">Location</label>
               <input
