@@ -1,13 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormControl,
-  FormGroup,
-  Validators,
-  NgForm
-} from '@angular/forms';
-import { AddReviewService } from './addReview.service';
-import { Review } from '../shared/review.model';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AddReviewService} from './addReview.service';
+import {Review} from '../shared/review.model';
 
 @Component({
   selector: 'app-add-review',
@@ -18,11 +12,14 @@ export class AddReviewComponent implements OnInit {
   id: number;
   addReviewForm: FormGroup;
   editMode = false;
+  data: { name: string; address: string; postcode: string }[];
+  filtered: { name: string; address: string; postcode: string }[];
 
-  constructor(private reviewService: AddReviewService) {}
+  constructor(private addReviewService: AddReviewService) {}
 
   ngOnInit() {
     this.initForm();
+    this.filtered = [];
   }
 
   onSubmit() {
@@ -42,23 +39,23 @@ export class AddReviewComponent implements OnInit {
       value.infrastructures,
       value.policies
     );
-    this.reviewService.addNewReview(newReview);
+    this.addReviewService.addNewReview(newReview);
     console.log(value);
   }
 
   private initForm() {
-    let schoolName = '';
-    let location = '';
-    let generalDescription = '';
-    let management = '';
-    let pupilsBehaviour = '';
-    let type = '';
-    let workload = '';
-    let workingHours = '';
-    let pressure = '';
-    let staff = '';
-    let infrastructures = '';
-    let policies = '';
+    const schoolName = '';
+    const location = '';
+    const generalDescription = '';
+    const management = '';
+    const pupilsBehaviour = '';
+    const type = '';
+    const workload = '';
+    const workingHours = '';
+    const pressure = '';
+    const staff = '';
+    const infrastructures = '';
+    const policies = '';
 
     this.addReviewForm = new FormGroup({
       schoolName: new FormControl(schoolName, Validators.required),
@@ -77,5 +74,14 @@ export class AddReviewComponent implements OnInit {
       infrastructures: new FormControl(infrastructures, Validators.required),
       policies: new FormControl(policies, Validators.required)
     });
+  }
+
+  onFilterNames(event) {
+    const filterValue = event.target.value.toLowerCase();
+    this.filtered = this.data.filter(x =>
+      x.name.toLowerCase().includes(filterValue)
+    );
+    console.log(this.filtered);
+    return this.filtered;
   }
 }
