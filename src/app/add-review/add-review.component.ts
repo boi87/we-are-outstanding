@@ -1,14 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormControl,
-  FormGroup,
-  Validators,
-  NgForm
-} from '@angular/forms';
-import { AddReviewService } from './addReview.service';
-import { Review } from '../shared/review.model';
-import schoolData from '../../../schools-data/school-data.json';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AddReviewService} from './addReview.service';
+import {Review} from '../shared/review.model';
+// import schoolData from '../../../schools-data/school-data.json';
 
 @Component({
   selector: 'app-add-review',
@@ -86,14 +80,6 @@ export class AddReviewComponent implements OnInit {
 
   onFilterNames(event) {
     const filterValue = event.target.value.toLowerCase();
-    // console.log(
-    //   this.data.filter(x => x.name.toLowerCase().includes(filterValue))
-    // );
-    // this.data.filter(x => {
-    //   if (x.name.toLowerCase().includes(filterValue)) {
-    //     this.filtered.push(x);
-    //   }
-    // });
     this.filtered = this.data.filter(x =>
       x.name.toLowerCase().includes(filterValue)
     );
