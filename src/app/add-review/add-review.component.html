@@ -26,11 +26,9 @@
                 (input)="onFilterNames($event)"
                 list="schools"
               />
-              <!-- <datalist *ngFor="let item of filtered" id="schools">
-                <option [value]="item.name"
-                  >{{ item.address }}, {{ item.postcode }}</option
-                >
-              </datalist> -->
+              <datalist *ngFor="let item of filtered" id="schools">
+                <option>{{ item }}</option>
+              </datalist>
               <p>{{ this.filtered.length }}</p>
             </div>
           </div>

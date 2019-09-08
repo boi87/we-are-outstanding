@@ -45,13 +45,11 @@ export class AddReviewService {
     console.log('this is the review', review);
     this.reviews.push(review);
     console.log(this.reviews);
-    // this.http
-    //   .post(
-    //     'https://weareoutstanding-6c621.firebaseio.com/posts.json'
-    //     , review)
-    //   .subscribe(reportData => {
-    //     console.log(reportData);
-    //   });
+    this.http
+      .post('https://weareoutstanding-6c621.firebaseio.com/posts.json', review)
+      .subscribe(reportData => {
+        console.log(reportData);
+      });
 
     Swal.fire(
       'Your review has been saved!',

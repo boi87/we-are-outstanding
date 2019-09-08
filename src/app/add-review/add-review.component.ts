@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AddReviewService} from './addReview.service';
-import {Review} from '../shared/review.model';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddReviewService } from './addReview.service';
+import { Review } from '../shared/review.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-review',
@@ -15,7 +16,10 @@ export class AddReviewComponent implements OnInit {
   data: { name: string; address: string; postcode: string }[];
   filtered: { name: string; address: string; postcode: string }[];
 
-  constructor(private addReviewService: AddReviewService) {}
+  constructor(
+    private http: HttpClient,
+    private addReviewService: AddReviewService
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -78,10 +82,20 @@ export class AddReviewComponent implements OnInit {
 
   onFilterNames(event) {
     const filterValue = event.target.value.toLowerCase();
-    this.filtered = this.data.filter(x =>
-      x.name.toLowerCase().includes(filterValue)
-    );
+    if (filterValue.length > 3) {
+      console.log(filterValue);
+
+      this.http
+        .get('https://weareoutstanding-6c621.firebaseio.com/schools.json')
+        .subscribe(data => {
+          Object.values(data).filter(school => {
+            if (school.name.toLowerCase().includes(filterValue)) {
+              this.filtered.push(school.name);
+            }
+          });
+        });
+    }
+
     console.log(this.filtered);
-    return this.filtered;
   }
 }
