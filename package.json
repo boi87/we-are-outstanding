@@ -21,23 +21,23 @@
     "@angular/platform-browser": "~8.2.6",
     "@angular/platform-browser-dynamic": "~8.2.6",
     "@angular/router": "~8.2.6",
-    "angular-bootstrap-md": "^8.1.0",
+    "angular-bootstrap-md": "^8.3.0",
     "bootstrap": "^4.3.1",
-    "bootstrap-material-design": "^4.1.1",
+    "bootstrap-material-design": "^4.1.2",
     "core-js": "^3.2.1",
     "rxjs": "~6.5.3",
     "sweetalert2": "^8.17.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.4",
     "@angular/cli": "~8.3.4",
     "@angular/compiler-cli": "~8.2.6",
     "@angular/language-service": "~8.2.6",
-    "@types/node": "~12.7.5",
     "@types/jasmine": "~3.4.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~12.7.5",
     "codelyzer": "^5.0.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -49,6 +49,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~8.4.1",
     "tslint": "~5.20.0",
-    "typescript": "~3.6.3"
+    "typescript": "3.4.1"
   }
 }
