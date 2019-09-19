@@ -7,9 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { AddReviewComponent } from './add-review/add-review.component';
-import { ReviewsComponent } from './reviews/reviews.component';
-import { AddReviewService } from './add-review/addReview.service';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 
@@ -27,7 +24,6 @@ import { ReviewsComponent } from './reviews/reviews.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
-    
   ],
   providers: [AddReviewService],
   bootstrap: [AppComponent]
