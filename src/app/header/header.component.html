@@ -1,32 +1,15 @@
-<mat-tab-group >
-  <mat-tab label="First"> Content 1 </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>
-</mat-tab-group>
-
-<ul class="nav nav-tabs" >
-  <div class="navbar-header">
-    <div
-      class="navbar-brand"
-      style="padding-left: 16px;
-    padding-top: 14px;"
-    >
-      We Are Outstanding
-    </div>
-  </div>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/new-review']">Add Review</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['reviews']">Read Reviews</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="margin-left: 15rem;">Log In</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link">Log Out</a>
-  </li>
-</ul>
+<nav mat-tab-nav-bar >
+  <a
+    mat-tab-link [routerLink]="['/home']"
+    style="background-color: mediumpurple; color: white; font-weight: bold"
+  >
+    WE ARE OUSTANDING
+  </a>
+  <a mat-tab-link [routerLink]="['/new-review']"> Add Review </a>
+  <a mat-tab-link [routerLink]="['reviews']"> Read Reviews </a>
+  <a mat-tab-link> Log In </a>
+  <a mat-tab-link> Log Out </a>
+</nav>
 
 <!--
 
