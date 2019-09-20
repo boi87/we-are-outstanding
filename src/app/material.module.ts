@@ -6,7 +6,18 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatSidenavModule,
+  MatProgressBarModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTabsModule,
+  MatAutocompleteModule
 } from '@angular/material';
 
 @NgModule({
@@ -16,7 +27,18 @@ import {
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTabsModule,
+    MatAutocompleteModule
   ],
   exports: [
     BrowserModule,
@@ -24,7 +46,18 @@ import {
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTabsModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule {}

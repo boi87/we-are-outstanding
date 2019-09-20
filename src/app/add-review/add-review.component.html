@@ -20,7 +20,7 @@
               <input
                 type="text"
                 id="schoolName"
-                class="form-control matInput"
+                matInput
                 formControlName="schoolName"
                 autocomplete="off"
                 (input)="onFilterNames($event)"
@@ -37,14 +37,18 @@
         <div class="form-item-box2" style="width: 22rem;">
           <div class="col-md-6" style="max-width: 100%;">
             <div class="form-group">
-              <label for="location" class="bmd-label-floating">Location</label>
-              <input
-                type="text"
-                id="location"
-                class="form-control matInput matInput"
-                formControlName="location"
-                autocomplete="off"
-              />
+<!--              <label for="location" class="bmd-label-floating">Location</label>-->
+              <mat-form-field>
+                <input
+                  type="text"
+                  id="location"
+                  class="form-control matInput"
+                  placeholder="Location"
+                  formControlName="location"
+                  autocomplete="off"
+                  matInput
+                />
+              </mat-form-field>
             </div>
           </div>
         </div>

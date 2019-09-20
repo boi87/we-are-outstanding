@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import {MaterialModule} from './material.module';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [AddReviewService],
   bootstrap: [AppComponent]
