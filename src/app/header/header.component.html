@@ -1,33 +1,13 @@
-<nav mat-tab-nav-bar >
+<nav mat-tab-nav-bar>
   <a
-    mat-tab-link [routerLink]="['/home']"
-    style="background-color: mediumpurple; color: white; font-weight: bold"
+    mat-tab-link
+    [routerLink]="['/home']"
+    style="background-color: purple; color: white; font-weight: bold"
   >
-    WE ARE OUSTANDING
+    WE ARE OUTSTANDING
   </a>
   <a mat-tab-link [routerLink]="['/new-review']"> Add Review </a>
   <a mat-tab-link [routerLink]="['reviews']"> Read Reviews </a>
   <a mat-tab-link> Log In </a>
   <a mat-tab-link> Log Out </a>
 </nav>
-
-<!--
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="navbar-brand">We Are Outstanding</div>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a [routerLink]="['/new-review']">Add Review</a></li>
-        <li>
-          <a [routerLink]="['reviews']">Read Reviews</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log In/Out</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->

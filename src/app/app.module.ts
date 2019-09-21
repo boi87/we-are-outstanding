@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import {MaterialModule} from './material.module';
-
+import { MaterialModule } from './material.module';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import {MaterialModule} from './material.module';
     HeaderComponent,
     AddReviewComponent,
     ReviewsComponent,
-    ReviewDetailComponent
+    ReviewDetailComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
