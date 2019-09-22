@@ -3,236 +3,240 @@
     <h3>Add a New Review</h3>
     <hr />
     <mat-card>
-      <form
-        [formGroup]="addReviewForm"
-        (ngSubmit)="onSubmit(); addReviewForm.reset()"
-      >
-        <div style="display: flex">
-          <div>
+      <mat-card style="margin-bottom: 15px">
+        <form [formGroup]="schoolDataForm">
+          <div style="display: flex; justify-content: space-evenly">
             <div>
               <div>
-                <mat-form-field>
-                  <input
-                    type="text"
-                    id="schoolName"
-                    placeholder="School Name"
-                    matInput
-                    formControlName="schoolName"
-                    autocomplete="off"
-                    (input)="onFilterNames($event)"
-                    list="schools"
-                  />
-                </mat-form-field>
-                <p>{{ this.filtered.length }}</p>
+                <div>
+                  <mat-form-field>
+                    <input
+                      matInput
+                      type="text"
+                      id="schoolName"
+                      placeholder="School Name"
+                      autocomplete="off"
+                      (input)="onFilterNames($event)"
+                      formControlName="schoolName"
+                    />
+                  </mat-form-field>
+                  <p>{{ this.filtered.length }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <div>
+                  <mat-form-field>
+                    <input
+                      matInput
+                      type="text"
+                      id="location"
+                      placeholder="Location"
+                      autocomplete="off"
+                      formControlName="location"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <label class="example-margin">Type:</label>
+                <mat-radio-group
+                  class="type-radio-buttons-group"
+                  formControlName="type"
+                >
+                  <mat-radio-button class="type-radio-button" value="public"
+                    >Public</mat-radio-button
+                  >
+                  <mat-radio-button class="type-radio-button" value="private"
+                    >Private</mat-radio-button
+                  >
+                </mat-radio-group>
               </div>
             </div>
           </div>
+        </form>
+        <mat-progress-bar
+          *ngIf="loading"
+          mode="indeterminate"
+        ></mat-progress-bar>
+      </mat-card>
 
-          <div>
+      <mat-card>
+        <form [formGroup]="addReviewForm">
+          <div style="display: flex; flex-wrap: wrap;">
             <div>
-              <div>
-                <!--              <label for="location" class="bmd-label-floating">Location</label>-->
-                <mat-form-field>
-                  <input
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="generalDescription"
+                    >General Description</label
+                  >
+                  <textarea
                     type="text"
-                    id="location"
+                    id="generalDescription"
                     class="form-control matInput"
-                    placeholder="Location"
-                    formControlName="location"
-                    autocomplete="off"
-                    matInput
-                  />
-                </mat-form-field>
+                    formControlName="generalDescription"
+                    rows="6"
+                  >
+                  </textarea>
+                </div>
               </div>
             </div>
-          </div>
 
-          <section>
             <div>
-              <label class="example-margin">Type:</label>
-              <mat-radio-group
-                class="type-radio-buttons-group"
-                formControlName="type"
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="management"
+                    >Management</label
+                  >
+                  <textarea
+                    type="text"
+                    id="management"
+                    class="form-control matInput"
+                    formControlName="management"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="pupilsBehaviour"
+                    >Pupils' Behaviour</label
+                  >
+                  <textarea
+                    type="text"
+                    id="pupilsBehaviour"
+                    class="form-control matInput"
+                    formControlName="pupilsBehaviour"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="workload"
+                    >Workload</label
+                  >
+                  <textarea
+                    type="text"
+                    id="workload"
+                    class="form-control matInput"
+                    formControlName="workload"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="workingHours"
+                    >Working Hours</label
+                  >
+                  <textarea
+                    type="text"
+                    id="workingHours"
+                    class="form-control matInput"
+                    formControlName="workingHours"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="pressure"
+                    >Pressure</label
+                  >
+                  <textarea
+                    type="text"
+                    id="pressure"
+                    class="form-control matInput"
+                    formControlName="pressure"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="staff">Staff</label>
+                  <textarea
+                    type="text"
+                    id="staff"
+                    class="form-control matInput"
+                    formControlName="staff"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="infrastructures"
+                    >Infrastructures</label
+                  >
+                  <textarea
+                    type="text"
+                    id="infrastructures"
+                    class="form-control matInput"
+                    formControlName="infrastructures"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div>
+                  <label class="bmd-label-floating" for="policies"
+                    >Policies</label
+                  >
+                  <textarea
+                    type="text"
+                    id="policies"
+                    class="form-control matInput"
+                    formControlName="policies"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                class="btn btn-success"
+                type="submit"
+                [disabled]="!addReviewForm.valid"
+                style="margin-right: 2rem;"
               >
-                <mat-radio-button class="type-radio-button" value="public"
-                  >Public</mat-radio-button
-                >
-                <mat-radio-button class="type-radio-button" value="private"
-                  >Private</mat-radio-button
-                >
-              </mat-radio-group>
-            </div>
-          </section>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap;">
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="generalDescription"
-                  >General Description</label
-                >
-                <textarea
-                  type="text"
-                  id="generalDescription"
-                  class="form-control matInput"
-                  formControlName="generalDescription"
-                  rows="6"
-                >
-                </textarea>
-              </div>
+                Save
+              </button>
+              <button class="btn btn-danger" type="button">Discard</button>
             </div>
           </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="management"
-                  >Management</label
-                >
-                <textarea
-                  type="text"
-                  id="management"
-                  class="form-control matInput"
-                  formControlName="management"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="pupilsBehaviour"
-                  >Pupils' Behaviour</label
-                >
-                <textarea
-                  type="text"
-                  id="pupilsBehaviour"
-                  class="form-control matInput"
-                  formControlName="pupilsBehaviour"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="workload"
-                  >Workload</label
-                >
-                <textarea
-                  type="text"
-                  id="workload"
-                  class="form-control matInput"
-                  formControlName="workload"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="workingHours"
-                  >Working Hours</label
-                >
-                <textarea
-                  type="text"
-                  id="workingHours"
-                  class="form-control matInput"
-                  formControlName="workingHours"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="pressure"
-                  >Pressure</label
-                >
-                <textarea
-                  type="text"
-                  id="pressure"
-                  class="form-control matInput"
-                  formControlName="pressure"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="staff">Staff</label>
-                <textarea
-                  type="text"
-                  id="staff"
-                  class="form-control matInput"
-                  formControlName="staff"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="infrastructures"
-                  >Infrastructures</label
-                >
-                <textarea
-                  type="text"
-                  id="infrastructures"
-                  class="form-control matInput"
-                  formControlName="infrastructures"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-md-12">
-              <div>
-                <label class="bmd-label-floating" for="policies"
-                  >Policies</label
-                >
-                <textarea
-                  type="text"
-                  id="policies"
-                  class="form-control matInput"
-                  formControlName="policies"
-                  rows="6"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <button
-              class="btn btn-success"
-              type="submit"
-              [disabled]="!addReviewForm.valid"
-              style="margin-right: 2rem;"
-            >
-              Save
-            </button>
-            <button class="btn btn-danger" type="button">Discard</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </mat-card>
     </mat-card>
   </div>
 </div>

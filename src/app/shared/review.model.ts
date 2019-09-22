@@ -13,12 +13,9 @@ export class Review {
   public policies: string;
 
   constructor(
-    schoolName: string,
-    location: string,
     generalDescription: string,
     management: string,
     pupilsBehaviour: string,
-    type: string,
     workload: string,
     workingHours: string,
     pressure: string,
@@ -26,12 +23,9 @@ export class Review {
     infrastructures: string,
     policies: string
   ) {
-    this.schoolName = schoolName;
-    this.location = location;
     this.generalDescription = generalDescription;
     this.management = management;
     this.pupilsBehaviour = pupilsBehaviour;
-    this.type = type;
     this.workload = workload;
     this.workingHours = workingHours;
     this.pressure = pressure;
