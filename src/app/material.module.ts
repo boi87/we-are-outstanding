@@ -17,7 +17,10 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatTabsModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatCheckboxModule,
+  MatButtonToggleModule,
+  MatRadioModule
 } from '@angular/material';
 
 @NgModule({
@@ -38,7 +41,10 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    MatRadioModule
   ],
   exports: [
     BrowserModule,
@@ -57,7 +63,10 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule {}

@@ -1,19 +1,9 @@
-/*.matInput {*/
-/*  border: none;*/
-/*  box-shadow: none;*/
-/*}*/
-
-
-.form-item-box {
-  border: 1px solid grey;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+.type-radio-buttons-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
 }
 
-.form-item-box2 {
-  border: 1px solid grey;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  margin-right: 2rem;
-  width: 26rem;
+.type-radio-button {
+  margin: 5px;
 }

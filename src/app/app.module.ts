@@ -11,6 +11,7 @@ import { ReviewDetailComponent } from './reviews/review-detail/review-detail.com
 import { ReviewsComponent } from './reviews/reviews.component';
 import { MaterialModule } from './material.module';
 import { LandingComponent } from './landing/landing.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LandingComponent } from './landing/landing.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [AddReviewService],
   bootstrap: [AppComponent]
