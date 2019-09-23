@@ -14,7 +14,7 @@
                       matInput
                       type="text"
                       id="schoolName"
-                      placeholder="School Name"
+                      placeholder="chool name"
                       autocomplete="off"
                       (input)="onFilterNames($event)"
                       formControlName="schoolName"
@@ -33,7 +33,7 @@
                       matInput
                       type="text"
                       id="location"
-                      placeholder="Location"
+                      placeholder="ocation"
                       autocomplete="off"
                       formControlName="location"
                     />
@@ -66,173 +66,127 @@
         ></mat-progress-bar>
       </mat-card>
 
-      <mat-card>
+      <mat-card
+        style="width: 60vw;
+      margin: auto;"
+      >
         <form [formGroup]="addReviewForm">
-          <div style="display: flex; flex-wrap: wrap;">
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="generalDescription"
-                    >General Description</label
-                  >
-                  <textarea
-                    type="text"
-                    id="generalDescription"
-                    class="form-control matInput"
-                    formControlName="generalDescription"
-                    rows="6"
-                  >
-                  </textarea>
-                </div>
-              </div>
-            </div>
+          <div
+            style="display: flex;
+            flex-direction: column;"
+          >
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                rows="4"
+                matInput
+                formControlName="generalDescription"
+                placeholder="General description"
+              >
+              </textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="management"
-                    >Management</label
-                  >
-                  <textarea
-                    type="text"
-                    id="management"
-                    class="form-control matInput"
-                    formControlName="management"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                rows="4"
+                matInput
+                formControlName="management"
+                placeholder="Management"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="pupilsBehaviour"
-                    >Pupils' Behaviour</label
-                  >
-                  <textarea
-                    type="text"
-                    id="pupilsBehaviour"
-                    class="form-control matInput"
-                    formControlName="pupilsBehaviour"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                rows="4"
+                matInput
+                formControlName="pupilsBehaviour"
+                placeholder="Pupils' behaviour"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="workload"
-                    >Workload</label
-                  >
-                  <textarea
-                    type="text"
-                    id="workload"
-                    class="form-control matInput"
-                    formControlName="workload"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                rows="4"
+                matInput
+                formControlName="workload"
+                placeholder="Workload"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="workingHours"
-                    >Working Hours</label
-                  >
-                  <textarea
-                    type="text"
-                    id="workingHours"
-                    class="form-control matInput"
-                    formControlName="workingHours"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                matInput
+                formControlName="workingHours"
+                placeholder="Working hours"
+                rows="4"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="pressure"
-                    >Pressure</label
-                  >
-                  <textarea
-                    type="text"
-                    id="pressure"
-                    class="form-control matInput"
-                    formControlName="pressure"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                matInput
+                formControlName="pressure"
+                placeholder="Pressure"
+                rows="4"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="staff">Staff</label>
-                  <textarea
-                    type="text"
-                    id="staff"
-                    class="form-control matInput"
-                    formControlName="staff"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                matInput
+                formControlName="staff"
+                placeholder="Staff"
+                rows="4"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="infrastructures"
-                    >Infrastructures</label
-                  >
-                  <textarea
-                    type="text"
-                    id="infrastructures"
-                    class="form-control matInput"
-                    formControlName="infrastructures"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                matInput
+                formControlName="infrastructures"
+                placeholder="Infrastructures"
+                rows="4"
+              ></textarea>
+            </mat-form-field>
 
-            <div>
-              <div class="col-md-12">
-                <div>
-                  <label class="bmd-label-floating" for="policies"
-                    >Policies</label
-                  >
-                  <textarea
-                    type="text"
-                    id="policies"
-                    class="form-control matInput"
-                    formControlName="policies"
-                    rows="6"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <textarea
+                type="text"
+                autocomplete="off"
+                matInput
+                formControlName="policies"
+                placeholder="Policies"
+                rows="4"
+              ></textarea>
+            </mat-form-field>
           </div>
 
           <div class="row">
             <div class="col-xs-12">
               <button
-                class="btn btn-success"
-                type="submit"
+                mat-flat-button
+                color="primary"
                 [disabled]="!addReviewForm.valid"
                 style="margin-right: 2rem;"
               >
                 Save
               </button>
-              <button class="btn btn-danger" type="button">Discard</button>
+              <button mat-flat-button color="warn">Discard</button>
             </div>
           </div>
         </form>

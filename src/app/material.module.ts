@@ -22,6 +22,7 @@ import {
   MatButtonToggleModule,
   MatRadioModule
 } from '@angular/material';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import {
     MatAutocompleteModule,
     MatCheckboxModule,
     MatButtonToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    TextFieldModule
   ],
   exports: [
     BrowserModule,
