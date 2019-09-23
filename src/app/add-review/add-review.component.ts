@@ -39,17 +39,15 @@ export class AddReviewComponent implements OnInit {
       console.log(filterValue);
 
       this.http
-        .get('https://weareoutstanding-6c621.firebaseio.com/schools.json')
+        .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
         .subscribe(data => {
-          Object.values(data).filter(school => {
-            if (school.name.toLowerCase().includes(filterValue)) {
-              this.filtered.push(school.name);
-            }
-          });
+          console.log(Object.keys(data).filter(filterValue));
+
+          Object.keys(data).filter(filterValue);
         });
     }
 
-    console.log(this.filtered);
+    // console.log(this.filtered);
   }
 
   onSelectSchool() {
