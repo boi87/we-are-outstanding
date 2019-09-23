@@ -8,12 +8,9 @@ export class AddReviewService {
   constructor(private http: HttpClient) {}
   private reviews: Review[] = [
     new Review(
-      'MossbourneCommunityAcademy',
-      'London',
       'Big blue strict school',
       'Management sucks',
       "Pupils' behaviour is bad",
-      'Public',
       'Workload is huge',
       'From 6 to 18',
       'Lots of pressure',
@@ -22,12 +19,9 @@ export class AddReviewService {
       'Very strict policies'
     ),
     new Review(
-      'St. James School',
-      'Manchester',
       'Small school',
       'Management great',
       "Pupils' behaviour is good",
-      'Private',
       'Workload is average',
       'From 8 to 15',
       'Not much pressure',

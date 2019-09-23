@@ -1,50 +1,17 @@
-<mat-tab-group >
-  <mat-tab label="First"> Content 1 </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>
-</mat-tab-group>
-
-<ul class="nav nav-tabs" >
-  <div class="navbar-header">
-    <div
-      class="navbar-brand"
-      style="padding-left: 16px;
-    padding-top: 14px;"
-    >
-      We Are Outstanding
-    </div>
-  </div>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/new-review']">Add Review</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['reviews']">Read Reviews</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="margin-left: 15rem;">Log In</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link">Log Out</a>
-  </li>
-</ul>
-
-<!--
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="navbar-brand">We Are Outstanding</div>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a [routerLink]="['/new-review']">Add Review</a></li>
-        <li>
-          <a [routerLink]="['reviews']">Read Reviews</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log In/Out</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
+<nav mat-tab-nav-bar>
+  <a
+    mat-tab-link
+    [routerLink]="['/home']"
+    style="background-color: purple;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: inherit;"
+  >
+    WE ARE OUTSTANDING
+  </a>
+  <a mat-tab-link [routerLink]="['/new-review']"> ADD REVIEW </a>
+  <a mat-tab-link [routerLink]="['reviews']"> READ REVIEWS </a>
+  <a mat-tab-link> LOG IN </a>
+  <a mat-tab-link> LOG OUT </a>
+</nav>

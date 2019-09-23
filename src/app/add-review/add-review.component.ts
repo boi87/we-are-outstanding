@@ -11,8 +11,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddReviewComponent implements OnInit {
   id: number;
+
+  schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
+
   editMode = false;
+
+  loading: boolean;
+
   data: { name: string; address: string; postcode: string }[];
   filtered: { name: string; address: string; postcode: string }[];
 
@@ -22,62 +28,9 @@ export class AddReviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loading = false;
     this.initForm();
     this.filtered = [];
-  }
-
-  onSubmit() {
-    const value = this.addReviewForm.value;
-    console.log(value);
-    const newReview = new Review(
-      value.schoolName,
-      value.location,
-      value.generalDescription,
-      value.management,
-      value.pupilsBehaviour,
-      value.type,
-      value.workload,
-      value.workingHours,
-      value.pressure,
-      value.staff,
-      value.infrastructures,
-      value.policies
-    );
-    this.addReviewService.addNewReview(newReview);
-    console.log(value);
-  }
-
-  private initForm() {
-    const schoolName = '';
-    const location = '';
-    const generalDescription = '';
-    const management = '';
-    const pupilsBehaviour = '';
-    const type = '';
-    const workload = '';
-    const workingHours = '';
-    const pressure = '';
-    const staff = '';
-    const infrastructures = '';
-    const policies = '';
-
-    this.addReviewForm = new FormGroup({
-      schoolName: new FormControl(schoolName, Validators.required),
-      location: new FormControl(location, Validators.required),
-      generalDescription: new FormControl(
-        generalDescription,
-        Validators.required
-      ),
-      management: new FormControl(management, Validators.required),
-      pupilsBehaviour: new FormControl(pupilsBehaviour, Validators.required),
-      type: new FormControl(type, Validators.required),
-      workload: new FormControl(workload, Validators.required),
-      workingHours: new FormControl(workingHours, Validators.required),
-      pressure: new FormControl(pressure, Validators.required),
-      staff: new FormControl(staff, Validators.required),
-      infrastructures: new FormControl(infrastructures, Validators.required),
-      policies: new FormControl(policies, Validators.required)
-    });
   }
 
   onFilterNames(event) {
@@ -97,5 +50,75 @@ export class AddReviewComponent implements OnInit {
     }
 
     console.log(this.filtered);
+  }
+
+  onSelectSchool() {
+    // console.log('dio sporco');
+    console.log(this.schoolDataForm.value);
+  }
+
+  onSubmitReview() {
+    const value = this.addReviewForm.value;
+    console.log(value);
+    const newReview = new Review(
+      value.generalDescription,
+      value.management,
+      value.pupilsBehaviour,
+      value.workload,
+      value.workingHours,
+      value.pressure,
+      value.staff,
+      value.infrastructures,
+      value.policies
+    );
+    this.addReviewService.addNewReview(newReview);
+    console.log(value);
+  }
+
+  private initForm() {
+    this.schoolDataForm = new FormGroup({
+      schoolName: new FormControl(null, [Validators.required]),
+      location: new FormControl(null, [Validators.required]),
+      type: new FormControl(null, [Validators.required])
+    });
+
+    this.addReviewForm = new FormGroup({
+      generalDescription: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      management: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      pupilsBehaviour: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      workload: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      workingHours: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      pressure: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      staff: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      infrastructures: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      policies: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      )
+    });
   }
 }

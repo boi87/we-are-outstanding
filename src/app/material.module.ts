@@ -17,8 +17,12 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatTabsModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatCheckboxModule,
+  MatButtonToggleModule,
+  MatRadioModule
 } from '@angular/material';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   imports: [
@@ -38,7 +42,11 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    MatRadioModule,
+    TextFieldModule
   ],
   exports: [
     BrowserModule,
@@ -57,7 +65,10 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatButtonToggleModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule {}
