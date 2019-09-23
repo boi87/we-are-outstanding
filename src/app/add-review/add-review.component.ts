@@ -41,9 +41,8 @@ export class AddReviewComponent implements OnInit {
       this.http
         .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
         .subscribe(data => {
-          console.log(Object.keys(data).filter(filterValue));
-
-          Object.keys(data).filter(filterValue);
+          // console.log(Object.keys(data).filter(filterValue));
+          // Object.keys(data).filter(filterValue);
         });
     }
 
