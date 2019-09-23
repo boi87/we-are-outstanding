@@ -1,63 +1,60 @@
 <div class="row" style="margin-top: 1rem">
   <div class="col-md-10">
-    <h3>Add a New Review</h3>
-    <hr />
-    <mat-card>
-      <mat-card style="margin-bottom: 15px">
+    <mat-card-subtitle>
+      <h3 style="text-align: center;">Add a New Review</h3>
+    </mat-card-subtitle>
+
+    <mat-card style="background-color: mediumorchid;">
+      <mat-card
+        style="width: 60vw;
+      margin: auto;
+      margin-bottom: 15px;"
+      >
         <form [formGroup]="schoolDataForm">
           <div style="display: flex; justify-content: space-evenly">
             <div>
-              <div>
-                <div>
-                  <mat-form-field>
-                    <input
-                      matInput
-                      type="text"
-                      id="schoolName"
-                      placeholder="chool name"
-                      autocomplete="off"
-                      (input)="onFilterNames($event)"
-                      formControlName="schoolName"
-                    />
-                  </mat-form-field>
-                  <p>{{ this.filtered.length }}</p>
-                </div>
-              </div>
+              <mat-form-field>
+                <input
+                  matInput
+                  type="text"
+                  id="schoolName"
+                  placeholder="School name"
+                  autocomplete="off"
+                  (input)="onFilterNames($event)"
+                  formControlName="schoolName"
+                />
+              </mat-form-field>
+              <p>{{ this.filtered.length }}</p>
             </div>
 
-            <div>
-              <div>
-                <div>
-                  <mat-form-field>
-                    <input
-                      matInput
-                      type="text"
-                      id="location"
-                      placeholder="ocation"
-                      autocomplete="off"
-                      formControlName="location"
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                id="location"
+                placeholder="Location"
+                autocomplete="off"
+                formControlName="location"
+              />
+            </mat-form-field>
 
-            <div>
-              <div>
-                <label class="example-margin">Type:</label>
-                <mat-radio-group
-                  class="type-radio-buttons-group"
-                  formControlName="type"
-                >
-                  <mat-radio-button class="type-radio-button" value="public"
-                    >Public</mat-radio-button
-                  >
-                  <mat-radio-button class="type-radio-button" value="private"
-                    >Private</mat-radio-button
-                  >
-                </mat-radio-group>
-              </div>
-            </div>
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select formControlName="type">
+                <mat-option value="public">
+                  Public
+                </mat-option>
+                <mat-option value="private">
+                  Private
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-card-actions>
+              <button mat-flat-button color="accent" (click)="onSelectSchool()">
+                That's my school!
+              </button>
+            </mat-card-actions>
           </div>
         </form>
         <mat-progress-bar
@@ -176,19 +173,17 @@
             </mat-form-field>
           </div>
 
-          <div class="row">
-            <div class="col-xs-12">
-              <button
-                mat-flat-button
-                color="primary"
-                [disabled]="!addReviewForm.valid"
-                style="margin-right: 2rem;"
-              >
-                Save
-              </button>
-              <button mat-flat-button color="warn">Discard</button>
-            </div>
-          </div>
+          <mat-card-actions>
+            <button
+              mat-flat-button
+              color="primary"
+              [disabled]="!addReviewForm.valid"
+              style="margin-right: 2rem;"
+            >
+              Save
+            </button>
+            <button mat-flat-button color="warn">Discard</button>
+          </mat-card-actions>
         </form>
       </mat-card>
     </mat-card>

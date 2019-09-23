@@ -33,7 +33,31 @@ export class AddReviewComponent implements OnInit {
     this.filtered = [];
   }
 
-  onSubmit() {
+  onFilterNames(event) {
+    const filterValue = event.target.value.toLowerCase();
+    if (filterValue.length > 3) {
+      console.log(filterValue);
+
+      this.http
+        .get('https://weareoutstanding-6c621.firebaseio.com/schools.json')
+        .subscribe(data => {
+          Object.values(data).filter(school => {
+            if (school.name.toLowerCase().includes(filterValue)) {
+              this.filtered.push(school.name);
+            }
+          });
+        });
+    }
+
+    console.log(this.filtered);
+  }
+
+  onSelectSchool() {
+    // console.log('dio sporco');
+    console.log(this.schoolDataForm.value);
+  }
+
+  onSubmitReview() {
     const value = this.addReviewForm.value;
     console.log(value);
     const newReview = new Review(
@@ -59,34 +83,42 @@ export class AddReviewComponent implements OnInit {
     });
 
     this.addReviewForm = new FormGroup({
-      generalDescription: new FormControl(null, Validators.required),
-      management: new FormControl(null, Validators.required),
-      pupilsBehaviour: new FormControl(null, Validators.required),
-      workload: new FormControl(null, Validators.required),
-      workingHours: new FormControl(null, Validators.required),
-      pressure: new FormControl(null, Validators.required),
-      staff: new FormControl(null, Validators.required),
-      infrastructures: new FormControl(null, Validators.required),
-      policies: new FormControl(null, Validators.required)
+      generalDescription: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      management: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      pupilsBehaviour: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      workload: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      workingHours: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      pressure: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      staff: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      infrastructures: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      ),
+      policies: new FormControl(
+        { value: null, disabled: !this.schoolDataForm.valid },
+        Validators.required
+      )
     });
-  }
-
-  onFilterNames(event) {
-    const filterValue = event.target.value.toLowerCase();
-    if (filterValue.length > 3) {
-      console.log(filterValue);
-
-      this.http
-        .get('https://weareoutstanding-6c621.firebaseio.com/schools.json')
-        .subscribe(data => {
-          Object.values(data).filter(school => {
-            if (school.name.toLowerCase().includes(filterValue)) {
-              this.filtered.push(school.name);
-            }
-          });
-        });
-    }
-
-    console.log(this.filtered);
   }
 }
