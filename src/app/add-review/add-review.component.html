@@ -17,12 +17,17 @@
                 <input
                   matInput
                   type="text"
-                  id="schoolName"
                   placeholder="School name"
                   autocomplete="off"
                   (input)="onFilterNames($event)"
+                  [matAutocomplete]="auto"
                   formControlName="schoolName"
                 />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let school of filtered" [value]="filtered[school]">
+                    <span>{{school}}</span>
+                  </mat-option>
+                </mat-autocomplete>
               </mat-form-field>
               <p>{{ this.filtered.length }}</p>
             </div>

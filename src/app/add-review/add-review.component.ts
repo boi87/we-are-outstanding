@@ -19,8 +19,7 @@ export class AddReviewComponent implements OnInit {
 
   loading: boolean;
 
-  data: any[];
-  filtered: any[];
+  filtered: string[];
 
   constructor(
     private http: HttpClient,
@@ -48,7 +47,9 @@ export class AddReviewComponent implements OnInit {
             //       .filter(x => x.toLowerCase().indexOf(filterValue));
           );
 
-          this.filtered = arr.map(words => words.filter(word => word.includes(filterValue)));
+          this.filtered = arr.map(words =>
+            words.filter(word => word.toLowerCase().includes(filterValue))
+          );
           console.log(this.filtered);
         });
     }
@@ -57,7 +58,6 @@ export class AddReviewComponent implements OnInit {
   }
 
   onSelectSchool() {
-    // console.log('dio sporco');
     console.log(this.schoolDataForm.value);
   }
 
