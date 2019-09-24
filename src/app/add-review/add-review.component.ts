@@ -44,13 +44,14 @@ export class AddReviewComponent implements OnInit {
           // console.log(data.map(e => arr.push(e)));
           arr.push(
             Object.values(data)
-            //       .filter(x => x.toLowerCase().indexOf(filterValue));
           );
 
           this.filtered = arr.map(words =>
             words.filter(word => word.toLowerCase().includes(filterValue))
           );
-          console.log(this.filtered);
+          console.log(typeof this.filtered);
+
+
         });
     }
 
