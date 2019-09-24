@@ -19,8 +19,8 @@ export class AddReviewComponent implements OnInit {
 
   loading: boolean;
 
-  data: { name: string; address: string; postcode: string }[];
-  filtered: { name: string; address: string; postcode: string }[];
+  data: any[];
+  filtered: any[];
 
   constructor(
     private http: HttpClient,
@@ -38,11 +38,18 @@ export class AddReviewComponent implements OnInit {
     if (filterValue.length > 3) {
       console.log(filterValue);
 
+      const arr = [];
       this.http
         .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
         .subscribe(data => {
-          // console.log(Object.keys(data).filter(filterValue));
-          // Object.keys(data).filter(filterValue);
+          // console.log(data.map(e => arr.push(e)));
+          arr.push(
+            Object.values(data)
+            //       .filter(x => x.toLowerCase().indexOf(filterValue));
+          );
+
+          this.filtered = arr.map(words => words.filter(word => word.includes(filterValue)));
+          console.log(this.filtered);
         });
     }
 
