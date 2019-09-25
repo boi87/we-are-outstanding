@@ -21,6 +21,7 @@ export class AddReviewComponent implements OnInit {
 
   selectedSchool: string;
   filterValue: string;
+  noSchoolError: boolean;
 
   loading: boolean;
 
@@ -32,6 +33,7 @@ export class AddReviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.noSchoolError = true;
     this.loading = false;
     this.filtered = [];
 
@@ -44,7 +46,6 @@ export class AddReviewComponent implements OnInit {
   onFilterNames(event) {
     this.filterValue = event.target.value.toLowerCase();
     if (this.filterValue.length >= 3) {
-
       // old code (for safety reason)
       // const arr = [];
       // this.http
@@ -77,8 +78,25 @@ export class AddReviewComponent implements OnInit {
       this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
         schoolNames.toLowerCase().includes(this.filterValue)
       );
-      // console.log(this.filtered);
+
+      this.noSchoolError = !this.filtered.length;
+
+      console.log(this.filterValue);
+
+      this.checkValidity(this.filterValue);
     }
+  }
+
+  checkValidity(filterValue: any) {
+    console.log(filterValue);
+    this.schoolDataForm.get('schoolName').setValue(filterValue);
+
+    this.filtered.map(e =>
+      e.toLowerCase() !==
+      this.schoolDataForm.get('schoolName').value.toLowerCase()
+        ? (this.noSchoolError = true)
+        : (this.noSchoolError = false)
+    );
   }
 
   onSelectSchool() {
@@ -88,7 +106,6 @@ export class AddReviewComponent implements OnInit {
     // call FB with name of the school, retrieve ID, address, etc.
 
     this.selectedSchool = this.schoolDataForm.value.schoolName;
-
 
     this.initForm();
   }
@@ -120,11 +137,10 @@ export class AddReviewComponent implements OnInit {
   }
 
   private initForm() {
-
     this.schoolDataForm = new FormGroup({
       schoolName: new FormControl(
         { value: null, disabled: !this.searchingForSchoolMode },
-        [Validators.required ]
+        [Validators.required]
       )
       // location: new FormControl(null, [Validators.required]),
       // type: new FormControl(null, [Validators.required])

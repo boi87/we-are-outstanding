@@ -30,7 +30,10 @@
                     formControlName="schoolName"
                     #schoolname
                   />
-                  <mat-autocomplete #auto="matAutocomplete">
+                  <mat-autocomplete
+                    #auto="matAutocomplete"
+                    (optionSelected)="checkValidity($event.option.value)"
+                  >
                     <mat-option
                       *ngFor="let school of filtered"
                       [value]="school"
@@ -38,6 +41,7 @@
                       <span>{{ school }}</span>
                     </mat-option>
                   </mat-autocomplete>
+                  <mat-error *ngIf="noSchoolError">No school found.</mat-error>
                 </mat-form-field>
               </div>
 
@@ -71,7 +75,11 @@
               >
                 <button
                   style="margin-bottom: 20px"
-                  [disabled]="!searchingForSchoolMode || !schoolname.value"
+                  [disabled]="
+                    !searchingForSchoolMode ||
+                    schoolname.value.length < 3 ||
+                    noSchoolError
+                  "
                   mat-stroked-button
                   color="primary"
                   (click)="onSelectSchool()"
