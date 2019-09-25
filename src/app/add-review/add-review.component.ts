@@ -54,6 +54,8 @@ export class AddReviewComponent implements OnInit {
       //     );
       //     console.log(typeof this.filtered);
       // });
+
+      // works with mockdata
       this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
         schoolNames.toLowerCase().includes(filterValue)
       );
@@ -88,8 +90,8 @@ export class AddReviewComponent implements OnInit {
   private initForm() {
     this.schoolDataForm = new FormGroup({
       schoolName: new FormControl(null, [Validators.required]),
-      location: new FormControl(null, [Validators.required]),
-      type: new FormControl(null, [Validators.required])
+      // location: new FormControl(null, [Validators.required]),
+      // type: new FormControl(null, [Validators.required])
     });
 
     this.addReviewForm = new FormGroup({
