@@ -20,6 +20,7 @@ export class AddReviewComponent implements OnInit {
   reviewAddingMode: boolean;
 
   selectedSchool: string;
+  filterValue: string;
 
   loading: boolean;
 
@@ -41,9 +42,8 @@ export class AddReviewComponent implements OnInit {
   }
 
   onFilterNames(event) {
-    const filterValue = event.target.value.toLowerCase();
-    if (filterValue.length >= 3) {
-      console.log(filterValue);
+    this.filterValue = event.target.value.toLowerCase();
+    if (this.filterValue.length >= 3) {
 
       // old code (for safety reason)
       // const arr = [];
@@ -75,18 +75,28 @@ export class AddReviewComponent implements OnInit {
 
       // this works with mockdata
       this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
-        schoolNames.toLowerCase().includes(filterValue)
+        schoolNames.toLowerCase().includes(this.filterValue)
       );
       // console.log(this.filtered);
     }
-
   }
 
   onSelectSchool() {
     this.searchingForSchoolMode = false;
     this.reviewAddingMode = true;
 
-    this.selectedSchool = this.schoolDataForm.value;
+    // call FB with name of the school, retrieve ID, address, etc.
+
+    this.selectedSchool = this.schoolDataForm.value.schoolName;
+
+
+    this.initForm();
+  }
+
+  onEditSelectedSchool() {
+    this.searchingForSchoolMode = true;
+    this.reviewAddingMode = false;
+    this.selectedSchool = null;
 
     this.initForm();
   }
@@ -111,12 +121,10 @@ export class AddReviewComponent implements OnInit {
 
   private initForm() {
 
-    console.log(this.searchingForSchoolMode);
-
     this.schoolDataForm = new FormGroup({
       schoolName: new FormControl(
         { value: null, disabled: !this.searchingForSchoolMode },
-        [Validators.required]
+        [Validators.required ]
       )
       // location: new FormControl(null, [Validators.required]),
       // type: new FormControl(null, [Validators.required])
