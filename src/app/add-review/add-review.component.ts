@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddReviewService } from './addReview.service';
 import { Review } from '../shared/review.model';
 import { HttpClient } from '@angular/common/http';
+import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.json';
 
 @Component({
   selector: 'app-add-review',
@@ -30,6 +31,8 @@ export class AddReviewComponent implements OnInit {
     this.loading = false;
     this.initForm();
     this.filtered = [];
+
+    console.log(mockSchoolsNames);
   }
 
   onFilterNames(event) {
@@ -38,24 +41,26 @@ export class AddReviewComponent implements OnInit {
       console.log(filterValue);
 
       const arr = [];
-      this.http
-        .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
-        .subscribe(data => {
-          // console.log(data.map(e => arr.push(e)));
-          arr.push(
-            Object.values(data)
-          );
-
-          this.filtered = arr.map(words =>
-            words.filter(word => word.toLowerCase().includes(filterValue))
-          );
-          console.log(typeof this.filtered);
-
-
-        });
+      // this.http
+      //   .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
+      //   .subscribe(data => {
+      //     // console.log(data.map(e => arr.push(e)));
+      //     arr.push(
+      //       Object.values(data)
+      //     );
+      //
+      //     this.filtered = arr.map(words =>
+      //       words.filter(word => word.toLowerCase().includes(filterValue))
+      //     );
+      //     console.log(typeof this.filtered);
+      // });
+      this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
+        schoolNames.toLowerCase().includes(filterValue)
+      );
+      console.log(this.filtered);
     }
 
-    // console.log(this.filtered);
+    console.log(typeof this.filtered);
   }
 
   onSelectSchool() {
