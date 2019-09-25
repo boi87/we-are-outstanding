@@ -24,41 +24,55 @@
                   formControlName="schoolName"
                 />
                 <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let school of filtered; let index = i" [value]="school">
-                    <span>{{school}}</span>
+                  <mat-option
+                    *ngFor="let school of filtered; let index = i"
+                    [value]="school"
+                  >
+                    <span>{{ school }}</span>
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
             </div>
 
-<!--            <mat-form-field>-->
-<!--              <input-->
-<!--                matInput-->
-<!--                type="text"-->
-<!--                id="location"-->
-<!--                placeholder="Location"-->
-<!--                autocomplete="off"-->
-<!--                formControlName="location"-->
-<!--              />-->
-<!--            </mat-form-field>-->
+            <!--            <mat-form-field>-->
+            <!--              <input-->
+            <!--                matInput-->
+            <!--                type="text"-->
+            <!--                id="location"-->
+            <!--                placeholder="Location"-->
+            <!--                autocomplete="off"-->
+            <!--                formControlName="location"-->
+            <!--              />-->
+            <!--            </mat-form-field>-->
 
-<!--            <mat-form-field>-->
-<!--              <mat-label>Type</mat-label>-->
-<!--              <mat-select formControlName="type">-->
-<!--                <mat-option value="public">-->
-<!--                  Public-->
-<!--                </mat-option>-->
-<!--                <mat-option value="private">-->
-<!--                  Private-->
-<!--                </mat-option>-->
-<!--              </mat-select>-->
-<!--            </mat-form-field>-->
+            <!--            <mat-form-field>-->
+            <!--              <mat-label>Type</mat-label>-->
+            <!--              <mat-select formControlName="type">-->
+            <!--                <mat-option value="public">-->
+            <!--                  Public-->
+            <!--                </mat-option>-->
+            <!--                <mat-option value="private">-->
+            <!--                  Private-->
+            <!--                </mat-option>-->
+            <!--              </mat-select>-->
+            <!--            </mat-form-field>-->
 
             <mat-card-actions style="display: flex; flex-direction: column">
-              <button style="margin-bottom: 20px" mat-flat-button color="primary" (click)="onSelectSchool()">
+              <button
+                style="margin-bottom: 20px"
+                [disabled]="!searchingForSchoolMode"
+                mat-flat-button
+                color="primary"
+                (click)="onSelectSchool()"
+              >
                 Yeah that's my school!
               </button>
-              <button mat-stroked-button color="warn" [routerLink]="['/contact-us']">
+              <button
+                mat-stroked-button
+                color="warn"
+                [disabled]="!searchingForSchoolMode"
+                [routerLink]="['/contact-us']"
+              >
                 Can't find my school!
               </button>
             </mat-card-actions>

@@ -16,7 +16,10 @@ export class AddReviewComponent implements OnInit {
   schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
 
-  editMode = false;
+  searchingForSchoolMode: boolean;
+  reviewAddingMode: boolean;
+
+  selectedSchool: string;
 
   loading: boolean;
 
@@ -29,18 +32,21 @@ export class AddReviewComponent implements OnInit {
 
   ngOnInit() {
     this.loading = false;
-    this.initForm();
     this.filtered = [];
 
-    console.log(mockSchoolsNames);
+    this.searchingForSchoolMode = true;
+    this.reviewAddingMode = false;
+
+    this.initForm();
   }
 
   onFilterNames(event) {
     const filterValue = event.target.value.toLowerCase();
-    if (filterValue.length > 3) {
+    if (filterValue.length >= 3) {
       console.log(filterValue);
 
-      const arr = [];
+      // old code (for safety reason)
+      // const arr = [];
       // this.http
       //   .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
       //   .subscribe(data => {
@@ -55,18 +61,34 @@ export class AddReviewComponent implements OnInit {
       //     console.log(typeof this.filtered);
       // });
 
-      // works with mockdata
+      // possible final working call
+      // this.http
+      //   .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
+      //   .subscribe(data => {
+      //     // console.log(data.map(e => arr.push(e)));
+      //
+      //     this.filtered = Object.keys(data).filter(schoolNames =>
+      //         schoolNames.toLowerCase().includes(filterValue)
+      //       );
+      //     console.log(typeof this.filtered);
+      // });
+
+      // this works with mockdata
       this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
         schoolNames.toLowerCase().includes(filterValue)
       );
-      console.log(this.filtered);
+      // console.log(this.filtered);
     }
 
-    console.log(typeof this.filtered);
   }
 
   onSelectSchool() {
-    console.log(this.schoolDataForm.value);
+    this.searchingForSchoolMode = false;
+    this.reviewAddingMode = true;
+
+    this.selectedSchool = this.schoolDataForm.value;
+
+    this.initForm();
   }
 
   onSubmitReview() {
@@ -88,47 +110,53 @@ export class AddReviewComponent implements OnInit {
   }
 
   private initForm() {
+
+    console.log(this.searchingForSchoolMode);
+
     this.schoolDataForm = new FormGroup({
-      schoolName: new FormControl(null, [Validators.required]),
+      schoolName: new FormControl(
+        { value: null, disabled: !this.searchingForSchoolMode },
+        [Validators.required]
+      )
       // location: new FormControl(null, [Validators.required]),
       // type: new FormControl(null, [Validators.required])
     });
 
     this.addReviewForm = new FormGroup({
       generalDescription: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       management: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       pupilsBehaviour: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       workload: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       workingHours: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       pressure: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       staff: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       infrastructures: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       policies: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       )
     });
