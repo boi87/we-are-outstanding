@@ -46,31 +46,15 @@ export class AddReviewComponent implements OnInit {
   onFilterNames(event) {
     this.filterValue = event.target.value.toLowerCase();
     if (this.filterValue.length >= 3) {
-      // old code (for safety reason)
-      // const arr = [];
-      // this.http
-      //   .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
-      //   .subscribe(data => {
-      //     // console.log(data.map(e => arr.push(e)));
-      //     arr.push(
-      //       Object.values(data)
-      //     );
-      //
-      //     this.filtered = arr.map(words =>
-      //       words.filter(word => word.toLowerCase().includes(filterValue))
-      //     );
-      //     console.log(typeof this.filtered);
-      // });
 
-      // possible final working call
+      // working final working query
       this.http
         .get('https://weareoutstanding-6c621.firebaseio.com/names.json')
         .subscribe(data => {
-          // console.log(data.map(e => arr.push(e)));
           this.filtered = Object.keys(data).filter(schoolNames =>
               schoolNames.toLowerCase().includes(this.filterValue)
             );
-          console.log( this.filtered);
+
       });
 
       // this works with mockdata
