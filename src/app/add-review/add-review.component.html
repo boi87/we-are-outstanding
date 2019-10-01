@@ -32,7 +32,7 @@
                   />
                   <mat-autocomplete
                     #auto="matAutocomplete"
-                    (optionSelected)="checkValidity($event.option.value)"
+                    (optionSelected)="noSchoolError = false"
                   >
                     <mat-option
                       *ngFor="let school of filtered"

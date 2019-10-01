@@ -46,16 +46,14 @@ export class AddReviewComponent implements OnInit {
   onFilterNames(event) {
     this.filterValue = event.target.value.toLowerCase();
     if (this.filterValue.length >= 3) {
-
       // working final working query
       this.http
         .get('https://weareoutstanding-6c621.firebaseio.com/names.json')
         .subscribe(data => {
           this.filtered = Object.keys(data).filter(schoolNames =>
-              schoolNames.toLowerCase().includes(this.filterValue)
-            );
-
-      });
+            schoolNames.toLowerCase().includes(this.filterValue)
+          );
+        });
 
       // this works with mockdata
       // this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
@@ -72,7 +70,7 @@ export class AddReviewComponent implements OnInit {
 
   checkValidity(filterValue: any) {
     console.log(filterValue);
-    this.schoolDataForm.get('schoolName').setValue(filterValue);
+    // this.schoolDataForm.get('schoolName').setValue(filterValue);
 
     this.filtered.map(e =>
       e.toLowerCase() !==
