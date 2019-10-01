@@ -63,21 +63,20 @@ export class AddReviewComponent implements OnInit {
       // });
 
       // possible final working call
-      // this.http
-      //   .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
-      //   .subscribe(data => {
-      //     // console.log(data.map(e => arr.push(e)));
-      //
-      //     this.filtered = Object.keys(data).filter(schoolNames =>
-      //         schoolNames.toLowerCase().includes(filterValue)
-      //       );
-      //     console.log(typeof this.filtered);
-      // });
+      this.http
+        .get('https://weareoutstanding-6c621.firebaseio.com/names.json')
+        .subscribe(data => {
+          // console.log(data.map(e => arr.push(e)));
+          this.filtered = Object.keys(data).filter(schoolNames =>
+              schoolNames.toLowerCase().includes(this.filterValue)
+            );
+          console.log( this.filtered);
+      });
 
       // this works with mockdata
-      this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
-        schoolNames.toLowerCase().includes(this.filterValue)
-      );
+      // this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
+      //   schoolNames.toLowerCase().includes(this.filterValue)
+      // );
 
       this.noSchoolError = !this.filtered.length;
 

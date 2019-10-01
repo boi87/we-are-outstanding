@@ -7,3 +7,8 @@
 .type-radio-button {
   margin: 5px;
 }
+
+.new-review-mat-form-field {
+  width: 57rem;
+  align-self: center;
+}
