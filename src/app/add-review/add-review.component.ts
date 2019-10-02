@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddReviewService } from './addReview.service';
 import { Review } from '../shared/review.model';
 import { HttpClient } from '@angular/common/http';
+import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.json';
 
 @Component({
   selector: 'app-add-review',
@@ -15,12 +16,16 @@ export class AddReviewComponent implements OnInit {
   schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
 
-  editMode = false;
+  searchingForSchoolMode: boolean;
+  reviewAddingMode: boolean;
+
+  selectedSchool: string;
+  filterValue: string;
+  noSchoolError: boolean;
 
   loading: boolean;
 
-  data: { name: string; address: string; postcode: string }[];
-  filtered: { name: string; address: string; postcode: string }[];
+  filtered: string[];
 
   constructor(
     private http: HttpClient,
@@ -28,31 +33,70 @@ export class AddReviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.noSchoolError = true;
     this.loading = false;
-    this.initForm();
     this.filtered = [];
+
+    this.searchingForSchoolMode = true;
+    this.reviewAddingMode = false;
+
+    this.initForm();
   }
 
   onFilterNames(event) {
-    const filterValue = event.target.value.toLowerCase();
-    if (filterValue.length > 3) {
-      console.log(filterValue);
-
+    this.filterValue = event.target.value.toLowerCase();
+    if (this.filterValue.length >= 3) {
+      // working final working query
       this.http
-        .get('https://weareoutstanding-6c621.firebaseio.com/schools-names.json')
+        .get('https://weareoutstanding-6c621.firebaseio.com/names.json')
         .subscribe(data => {
-          console.log(Object.keys(data).filter(filterValue));
-
-          Object.keys(data).filter(filterValue);
+          this.filtered = Object.keys(data).filter(schoolNames =>
+            schoolNames.toLowerCase().includes(this.filterValue)
+          );
         });
-    }
 
-    // console.log(this.filtered);
+      // this works with mockdata
+      // this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
+      //   schoolNames.toLowerCase().includes(this.filterValue)
+      // );
+
+      this.noSchoolError = !this.filtered.length;
+
+      console.log(this.filterValue);
+
+      this.checkValidity(this.filterValue);
+    }
+  }
+
+  checkValidity(filterValue: any) {
+    console.log(filterValue);
+    // this.schoolDataForm.get('schoolName').setValue(filterValue);
+
+    this.filtered.map(e =>
+      e.toLowerCase() !==
+      this.schoolDataForm.get('schoolName').value.toLowerCase()
+        ? (this.noSchoolError = true)
+        : (this.noSchoolError = false)
+    );
   }
 
   onSelectSchool() {
-    // console.log('dio sporco');
-    console.log(this.schoolDataForm.value);
+    this.searchingForSchoolMode = false;
+    this.reviewAddingMode = true;
+
+    // call FB with name of the school, retrieve ID, address, etc.
+
+    this.selectedSchool = this.schoolDataForm.value.schoolName;
+
+    this.initForm();
+  }
+
+  onEditSelectedSchool() {
+    this.searchingForSchoolMode = true;
+    this.reviewAddingMode = false;
+    this.selectedSchool = null;
+
+    this.initForm();
   }
 
   onSubmitReview() {
@@ -75,46 +119,49 @@ export class AddReviewComponent implements OnInit {
 
   private initForm() {
     this.schoolDataForm = new FormGroup({
-      schoolName: new FormControl(null, [Validators.required]),
-      location: new FormControl(null, [Validators.required]),
-      type: new FormControl(null, [Validators.required])
+      schoolName: new FormControl(
+        { value: null, disabled: !this.searchingForSchoolMode },
+        [Validators.required]
+      )
+      // location: new FormControl(null, [Validators.required]),
+      // type: new FormControl(null, [Validators.required])
     });
 
     this.addReviewForm = new FormGroup({
       generalDescription: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       management: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       pupilsBehaviour: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       workload: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       workingHours: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       pressure: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       staff: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       infrastructures: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       ),
       policies: new FormControl(
-        { value: null, disabled: !this.schoolDataForm.valid },
+        { value: null, disabled: !this.reviewAddingMode },
         Validators.required
       )
     });
