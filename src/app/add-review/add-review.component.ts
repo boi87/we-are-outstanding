@@ -1,9 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddReviewService } from '../services/addReview.service';
-import { Review } from '../shared/review.model';
 import { HttpClient } from '@angular/common/http';
-import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.json';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-review',
@@ -102,21 +101,30 @@ export class AddReviewComponent implements OnInit {
     };
     this.addReviewService.addNewReview(newReview).subscribe(
       response => {
+        if (response) {
+          Swal.fire({
+            title: `Your review for ${this.selectedSchool} has been saved!`,
+            type: 'success'
+          });
+        }
         this.addReviewForm.reset();
-      }, error => {
-        console.log(error) //catch error
-      });;
-
+        this.reviewAddingMode = false;
+        this.searchingForSchoolMode = true;
+        this.ngOnInit();
+      },
+      error => {
+        Swal.fire({
+          title: `We couldn\'t save your review this time!`,
+          text: error,
+          type: 'error'
+        });
+      }
+    );
   }
 
   onDiscardAndClear() {
     this.ngOnInit();
-    // this.searchingForSchoolMode = true;
-    // this.reviewAddingMode = false;
-    //
-    // this.addReviewForm.reset();
   }
-
 
   private initForm() {
     this.schoolDataForm = new FormGroup({

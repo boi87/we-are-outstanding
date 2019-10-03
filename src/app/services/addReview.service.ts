@@ -47,7 +47,7 @@ export class AddReviewService {
 
     console.log(url);
 
-    this.http.post(url, newReview);
+    return this.http.post(url, newReview);
 
     //   .subscribe(reportData => {
     //   console.log(reportData);
