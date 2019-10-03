@@ -11,7 +11,6 @@ import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.
   styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent implements OnInit {
-  id: number;
 
   schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
@@ -100,21 +99,11 @@ export class AddReviewComponent implements OnInit {
   }
 
   onSubmitReview() {
-    const value = this.addReviewForm.value;
-    console.log(value);
-    const newReview = new Review(
-      value.generalDescription,
-      value.management,
-      value.pupilsBehaviour,
-      value.workload,
-      value.workingHours,
-      value.pressure,
-      value.staff,
-      value.infrastructures,
-      value.policies
-    );
+    const newReview = {
+      schoolName: this.selectedSchool,
+      newReview: this.addReviewForm.value
+    };
     this.addReviewService.addNewReview(newReview);
-    console.log(value);
   }
 
   private initForm() {

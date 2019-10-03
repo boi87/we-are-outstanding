@@ -1,10 +1,7 @@
 export class Review {
-  public schoolName: string;
-  public location: string;
   public generalDescription: string;
   public management: string;
   public pupilsBehaviour: string;
-  public type: string;
   public workload: string;
   public workingHours: string;
   public pressure: string;
@@ -32,5 +29,18 @@ export class Review {
     this.staff = staff;
     this.infrastructures = infrastructures;
     this.policies = policies;
+  }
+}
+
+export class NewReview {
+  public schoolName: string;
+  public newReview: Review;
+
+  constructor(
+    schoolName: string,
+    newReview: Review
+  ) {
+    this.schoolName = schoolName;
+    this.newReview = newReview;
   }
 }

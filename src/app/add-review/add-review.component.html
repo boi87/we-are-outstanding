@@ -239,12 +239,16 @@
             </mat-form-field>
           </div>
 
-          <mat-card-actions>
+          <mat-card-actions
+            style="display: flex;
+    justify-content: center;"
+          >
             <button
               mat-flat-button
               color="primary"
               [disabled]="!addReviewForm.valid"
               style="margin-right: 2rem;"
+              (click)="onSubmitReview()"
             >
               Save
             </button>
