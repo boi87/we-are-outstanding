@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddReviewService } from './addReview.service';
+import { AddReviewService } from '../services/addReview.service';
 import { Review } from '../shared/review.model';
 import { HttpClient } from '@angular/common/http';
 import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.json';
@@ -11,7 +11,7 @@ import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.
   styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent implements OnInit {
-
+  @Input() submitted
   schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
 
@@ -60,17 +60,14 @@ export class AddReviewComponent implements OnInit {
       // );
 
       this.noSchoolError = !this.filtered.length;
+      //
+      // console.log(this.filterValue);
 
-      console.log(this.filterValue);
-
-      this.checkValidity(this.filterValue);
+      this.checkValidity();
     }
   }
 
-  checkValidity(filterValue: any) {
-    console.log(filterValue);
-    // this.schoolDataForm.get('schoolName').setValue(filterValue);
-
+  checkValidity() {
     this.filtered.map(e =>
       e.toLowerCase() !==
       this.schoolDataForm.get('schoolName').value.toLowerCase()
@@ -104,7 +101,17 @@ export class AddReviewComponent implements OnInit {
       newReview: this.addReviewForm.value
     };
     this.addReviewService.addNewReview(newReview);
+
   }
+
+  onDiscardAndClear() {
+    this.ngOnInit();
+    // this.searchingForSchoolMode = true;
+    // this.reviewAddingMode = false;
+    //
+    // this.addReviewForm.reset();
+  }
+
 
   private initForm() {
     this.schoolDataForm = new FormGroup({

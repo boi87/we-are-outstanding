@@ -252,7 +252,9 @@
             >
               Save
             </button>
-            <button mat-flat-button color="warn">Discard</button>
+            <button mat-flat-button color="warn" (click)="onDiscardAndClear()">
+              Discard & Clean form
+            </button>
           </mat-card-actions>
         </form>
       </mat-card>

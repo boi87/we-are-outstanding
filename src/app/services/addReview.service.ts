@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NewReview, Review } from '../shared/review.model';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AddReviewService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
+
   private reviews: Review[] = [
     new Review(
       'Big blue strict school',
@@ -47,12 +49,31 @@ export class AddReviewService {
 
     this.http.post(url, newReview).subscribe(reportData => {
       console.log(reportData);
+      if (reportData) {
+        Swal.fire({
+          title: `Your review for ${reviewValues.schoolName} has been saved!`,
+          text: 'What do you want to do now?',
+          showCancelButton: true,
+          confirmButtonText: 'Add another Review',
+          confirmButtonColor: 'green',
+          cancelButtonText: 'Read reviews',
+          cancelButtonColor: 'purple',
+          type: 'success'
+        }).then((result) => {
+          console.log(result);
+          if (result) {
+            this.router.navigate(['../new-review']);
+          } else {
+            this.router.navigate(['../reviews']);
+          }
+        });
+      } else {
+        // throw new Error('We could not save your review this time');
+        Swal.fire({
+          title: 'We could not save your review this time',
+          type: 'error'
+        });
+      }
     });
-
-    // Swal.fire(
-    //   'Your review has been saved!',
-    //   `${review.schoolName} is in our system.`,
-    //   'success'
-    // );
   }
 }
