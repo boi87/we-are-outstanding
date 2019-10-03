@@ -100,7 +100,12 @@ export class AddReviewComponent implements OnInit {
       schoolName: this.selectedSchool,
       newReview: this.addReviewForm.value
     };
-    this.addReviewService.addNewReview(newReview);
+    this.addReviewService.addNewReview(newReview).subscribe(
+      response => {
+        this.addReviewForm.reset();
+      }, error => {
+        console.log(error) //catch error
+      });;
 
   }
 

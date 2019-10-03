@@ -47,27 +47,29 @@ export class AddReviewService {
 
     console.log(url);
 
-    this.http.post(url, newReview).subscribe(reportData => {
-      console.log(reportData);
-      if (reportData) {
-        Swal.fire({
-          title: `Your review for ${reviewValues.schoolName} has been saved!`,
-          type: 'success'
-        }).then((result) => {
-          console.log(result);
-          if (result) {
-            console.log(result);
-          } else {
-            console.log(result);
-          }
-        });
-      } else {
-        // throw new Error('We could not save your review this time');
-        Swal.fire({
-          title: 'We could not save your review this time',
-          type: 'error'
-        });
-      }
-    });
+    this.http.post(url, newReview);
+
+    //   .subscribe(reportData => {
+    //   console.log(reportData);
+    //   if (reportData) {
+    //     Swal.fire({
+    //       title: `Your review for ${reviewValues.schoolName} has been saved!`,
+    //       type: 'success'
+    //     }).then((result) => {
+    //       console.log(result);
+    //       if (result) {
+    //         console.log(result);
+    //       } else {
+    //         console.log(result);
+    //       }
+    //     });
+    //   } else {
+    //     // throw new Error('We could not save your review this time');
+    //     Swal.fire({
+    //       title: 'We could not save your review this time',
+    //       type: 'error'
+    //     });
+    //   }
+    // });
   }
 }
