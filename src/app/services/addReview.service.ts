@@ -52,19 +52,13 @@ export class AddReviewService {
       if (reportData) {
         Swal.fire({
           title: `Your review for ${reviewValues.schoolName} has been saved!`,
-          text: 'What do you want to do now?',
-          showCancelButton: true,
-          confirmButtonText: 'Add another Review',
-          confirmButtonColor: 'green',
-          cancelButtonText: 'Read reviews',
-          cancelButtonColor: 'purple',
           type: 'success'
         }).then((result) => {
           console.log(result);
           if (result) {
-            this.router.navigate(['../new-review']);
+            console.log(result);
           } else {
-            this.router.navigate(['../reviews']);
+            console.log(result);
           }
         });
       } else {
