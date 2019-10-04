@@ -257,6 +257,10 @@
             </button>
           </mat-card-actions>
         </form>
+        <mat-progress-bar
+          *ngIf="loading"
+          mode="indeterminate"
+        ></mat-progress-bar>
       </mat-card>
     </mat-card>
   </div>

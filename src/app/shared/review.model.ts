@@ -34,13 +34,13 @@ export class Review {
 
 export class NewReview {
   public schoolName: string;
-  public newReview: Review;
+  public review: Review;
 
   constructor(
     schoolName: string,
     newReview: Review
   ) {
     this.schoolName = schoolName;
-    this.newReview = newReview;
+    this.review = newReview;
   }
 }

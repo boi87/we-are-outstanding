@@ -39,7 +39,7 @@ export class AddReviewService {
 
   addNewReview(reviewValues: NewReview) {
     const school = reviewValues.schoolName;
-    const newReview = reviewValues.newReview;
+    const newReview = reviewValues.review;
     const url = `https://weareoutstanding-6c621.firebaseio.com/names/${school.replace(
       /\s/g,
       '%20'

@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent implements OnInit {
-  @Input() submitted
   schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
 
@@ -52,15 +51,7 @@ export class AddReviewComponent implements OnInit {
             schoolNames.toLowerCase().includes(this.filterValue)
           );
         });
-
-      // this works with mockdata
-      // this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
-      //   schoolNames.toLowerCase().includes(this.filterValue)
-      // );
-
       this.noSchoolError = !this.filtered.length;
-      //
-      // console.log(this.filterValue);
 
       this.checkValidity();
     }
@@ -97,8 +88,9 @@ export class AddReviewComponent implements OnInit {
   onSubmitReview() {
     const newReview = {
       schoolName: this.selectedSchool,
-      newReview: this.addReviewForm.value
+      review: this.addReviewForm.value
     };
+    this.loading = true;
     this.addReviewService.addNewReview(newReview).subscribe(
       response => {
         if (response) {
@@ -106,6 +98,7 @@ export class AddReviewComponent implements OnInit {
             title: `Your review for ${this.selectedSchool} has been saved!`,
             type: 'success'
           });
+          this.loading = false;
         }
         this.addReviewForm.reset();
         this.reviewAddingMode = false;
@@ -118,6 +111,8 @@ export class AddReviewComponent implements OnInit {
           text: error,
           type: 'error'
         });
+        this.loading = false;
+        this.addReviewForm.patchValue(newReview.review);
       }
     );
   }
