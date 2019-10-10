@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddReviewService } from './addReview.service';
-import { Review } from '../shared/review.model';
+import { AddReviewService } from '../services/addReview.service';
 import { HttpClient } from '@angular/common/http';
-import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.json';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-review',
@@ -11,8 +10,6 @@ import { default as mockSchoolsNames } from '../../../mockData/mockSchoolsNames.
   styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent implements OnInit {
-  id: number;
-
   schoolDataForm: FormGroup;
   addReviewForm: FormGroup;
 
@@ -54,24 +51,13 @@ export class AddReviewComponent implements OnInit {
             schoolNames.toLowerCase().includes(this.filterValue)
           );
         });
-
-      // this works with mockdata
-      // this.filtered = Object.keys(mockSchoolsNames).filter(schoolNames =>
-      //   schoolNames.toLowerCase().includes(this.filterValue)
-      // );
-
       this.noSchoolError = !this.filtered.length;
 
-      console.log(this.filterValue);
-
-      this.checkValidity(this.filterValue);
+      this.checkValidity();
     }
   }
 
-  checkValidity(filterValue: any) {
-    console.log(filterValue);
-    // this.schoolDataForm.get('schoolName').setValue(filterValue);
-
+  checkValidity() {
     this.filtered.map(e =>
       e.toLowerCase() !==
       this.schoolDataForm.get('schoolName').value.toLowerCase()
@@ -100,21 +86,39 @@ export class AddReviewComponent implements OnInit {
   }
 
   onSubmitReview() {
-    const value = this.addReviewForm.value;
-    console.log(value);
-    const newReview = new Review(
-      value.generalDescription,
-      value.management,
-      value.pupilsBehaviour,
-      value.workload,
-      value.workingHours,
-      value.pressure,
-      value.staff,
-      value.infrastructures,
-      value.policies
+    const newReview = {
+      schoolName: this.selectedSchool,
+      review: this.addReviewForm.value
+    };
+    this.loading = true;
+    this.addReviewService.addNewReview(newReview).subscribe(
+      response => {
+        if (response) {
+          Swal.fire({
+            title: `Your review for ${this.selectedSchool} has been saved!`,
+            type: 'success'
+          });
+          this.loading = false;
+        }
+        this.addReviewForm.reset();
+        this.reviewAddingMode = false;
+        this.searchingForSchoolMode = true;
+        this.ngOnInit();
+      },
+      error => {
+        Swal.fire({
+          title: `We couldn\'t save your review this time!`,
+          text: error,
+          type: 'error'
+        });
+        this.loading = false;
+        this.addReviewForm.patchValue(newReview.review);
+      }
     );
-    this.addReviewService.addNewReview(newReview);
-    console.log(value);
+  }
+
+  onDiscardAndClear() {
+    this.ngOnInit();
   }
 
   private initForm() {

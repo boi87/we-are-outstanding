@@ -239,18 +239,28 @@
             </mat-form-field>
           </div>
 
-          <mat-card-actions>
+          <mat-card-actions
+            style="display: flex;
+    justify-content: center;"
+          >
             <button
               mat-flat-button
               color="primary"
               [disabled]="!addReviewForm.valid"
               style="margin-right: 2rem;"
+              (click)="onSubmitReview()"
             >
               Save
             </button>
-            <button mat-flat-button color="warn">Discard</button>
+            <button mat-flat-button color="warn" (click)="onDiscardAndClear()">
+              Discard & Clean form
+            </button>
           </mat-card-actions>
         </form>
+        <mat-progress-bar
+          *ngIf="loading"
+          mode="indeterminate"
+        ></mat-progress-bar>
       </mat-card>
     </mat-card>
   </div>
