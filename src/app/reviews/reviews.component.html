@@ -1,90 +1,105 @@
-<mat-card>
-  <mat-card
-    style="width: 40vw;
+<div class="row" style="margin-top: 1rem">
+  <div class="col-md-10">
+    <mat-card-subtitle>
+      <h3 style="text-align: center; color: rebeccapurple;">
+        Read Reviews
+      </h3>
+    </mat-card-subtitle>
+    <mat-card>
+      <mat-card
+        style="width: 40vw;
       margin: auto;
       margin-bottom: 15px;"
-  >
-    <ng-container *ngIf="searchingForSchoolMode">
-      <form [formGroup]="schoolDataForm">
-        <div style="display: flex; justify-content: space-evenly ">
-          <div>
-            <mat-form-field
-              style="width: 22rem;
+      >
+        <ng-container *ngIf="searchingForSchoolMode">
+          <form [formGroup]="schoolDataForm">
+            <div style="display: flex; justify-content: space-evenly ">
+              <div>
+                <mat-form-field
+                  style="width: 22rem;
                       margin-top: 27px;"
-            >
-              <input
-                matInput
-                type="text"
-                placeholder="School name"
-                autcomplete="off"
-                (input)="onFilterNames($event)"
-                [matAutocomplete]="auto"
-                formControlName="schoolName"
-                #schoolname
-              />
-              <mat-autocomplete
-                #auto="matAutocomplete"
-                (optionSelected)="noSchoolError = false"
-              >
-                <mat-option *ngFor="let school of filtered" [value]="school">
-                  <span>{{ school }}</span>
-                </mat-option>
-              </mat-autocomplete>
-              <mat-error *ngIf="noSchoolError">No school found.</mat-error>
-            </mat-form-field>
-          </div>
+                >
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="School name"
+                    autcomplete="off"
+                    (input)="onFilterNames($event)"
+                    [matAutocomplete]="auto"
+                    formControlName="schoolName"
+                    #schoolname
+                  />
+                  <mat-autocomplete
+                    #auto="matAutocomplete"
+                    (optionSelected)="noSchoolError = false"
+                  >
+                    <mat-option
+                      *ngFor="let school of filtered"
+                      [value]="school"
+                    >
+                      <span>{{ school }}</span>
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-error *ngIf="noSchoolError">No school found.</mat-error>
+                </mat-form-field>
+              </div>
 
-          <mat-card-actions
-            style="display: flex;
+              <mat-card-actions
+                style="display: flex;
                 flex-direction: column;
                 margin-top: 7px;"
+              >
+                <button
+                  style="margin-bottom: 20px"
+                  [disabled]="schoolname.value.length < 3 || noSchoolError"
+                  mat-raised-button
+                  color="primary"
+                  (click)="onSelectSchool()"
+                >
+                  Yeah that's my school!
+                </button>
+                <button
+                  mat-stroked-button
+                  color="warn"
+                  [routerLink]="['/contact-us']"
+                >
+                  Can't find my school!
+                </button>
+              </mat-card-actions>
+            </div>
+          </form>
+        </ng-container>
+
+        <div
+          *ngIf="!searchingForSchoolMode"
+          style="display: flex;
+    flex-direction: column;"
+        >
+          <span style="margin: auto; margin-bottom: 15px; ">
+            Showing reviews for
+            <span
+              style="margin: auto; margin-bottom: 15px; font-weight: bold; color: rebeccapurple; "
+              >{{ this.selectedSchool }}</span
+            >.
+          </span>
+          <mat-card-actions
+            style="display: flex; flex-direction: column; margin-bottom: 0;"
           >
             <button
-              style="margin-bottom: 20px"
-              [disabled]="schoolname.value.length < 3 || noSchoolError"
               mat-raised-button
               color="primary"
-              (click)="onSelectSchool()"
+              (click)="onEditSelectedSchool()"
             >
-              Yeah that's my school!
-            </button>
-            <button
-              mat-stroked-button
-              color="warn"
-              [routerLink]="['/contact-us']"
-            >
-              Can't find my school!
+              Change school
             </button>
           </mat-card-actions>
         </div>
-      </form>
-    </ng-container>
-
-    <div
-      *ngIf="!searchingForSchoolMode"
-      style="display: flex;
-    flex-direction: column;"
-    >
-      <span style="margin: auto; margin-bottom: 15px; ">
-        Showing reviews for
-        <span
-          style="margin: auto; margin-bottom: 15px; font-weight: bold; color: rebeccapurple; "
-          >{{ this.selectedSchool }}</span
-        >.
-      </span>
-      <mat-card-actions
-        style="display: flex; flex-direction: column; margin-bottom: 0;"
-      >
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="onEditSelectedSchool()"
-        >
-          Change school
-        </button>
-      </mat-card-actions>
-    </div>
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  </mat-card>
-</mat-card>
-<app-review-detail *ngIf="selectedSchool"></app-review-detail>
+        <mat-progress-bar
+          *ngIf="loading"
+          mode="indeterminate"
+        ></mat-progress-bar>
+      </mat-card>
+    </mat-card>
+    <app-review-detail *ngIf="selectedSchool"></app-review-detail>
+  </div>
+</div>
