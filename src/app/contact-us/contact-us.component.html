@@ -1,0 +1,67 @@
+<div class="row" style="margin-top: 1rem">
+  <div class="col-md-10">
+    <mat-card-subtitle>
+      <h3
+        style="text-align: left; color: white; height: 7rem; background-color: forestgreen"
+      >
+        Contact Us!
+      </h3>
+    </mat-card-subtitle>
+  </div>
+</div>
+
+<mat-card>
+  <form [formGroup]="contactForm">
+    <div style="display: flex; flex-direction: column">
+      <mat-form-field class="contact-us-mat-form-field">
+        <input
+          matInput
+          type="text"
+          placeholder="Name and surname"
+          autcomplete="off"
+          autocomplete="off"
+          formControlName="name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="contact-us-mat-form-field">
+        <input
+          matInput
+          type="text"
+          placeholder="email"
+          autcomplete="off"
+          autocomplete="off"
+          formControlName="name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="contact-us-mat-form-field">
+        <textarea
+          type="text"
+          autocomplete="off"
+          rows="4"
+          matInput
+          formControlName="message"
+          placeholder="Type your message here"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <mat-card-actions
+      style="display: flex;
+                flex-direction: column;
+                margin-top: 7px;"
+    >
+      <button
+        style="margin-bottom: 20px"
+        [disabled]="!contactForm.valid || loading"
+        mat-raised-button
+        color="primary"
+        (click)="onSubmit()"
+      >
+        SEND
+      </button>
+    </mat-card-actions>
+  </form>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+</mat-card>

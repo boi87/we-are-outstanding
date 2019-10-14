@@ -4,6 +4,7 @@ import { AddReviewComponent } from './add-review/add-review.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { LandingComponent } from './landing/landing.component';
+import {ContactUsComponent} from './contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
     path: 'reviews',
     component: ReviewsComponent,
     children: [{ path: ':schoolName', component: ReviewDetailComponent }]
-  }
+  },
+  { path: 'contact-us', component: ContactUsComponent }
 ];
 
 @NgModule({
