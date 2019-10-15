@@ -2,14 +2,18 @@
   mat-tab-nav-bar
   style="margin: -1% -1% -16px -1%; background-color: #2f3133;"
 >
+
+  <div style="display: flex">
   <a
     mat-tab-link
     [routerLink]="['/home']"
-    style="background-color: #6320EE;
+    class="nav-link"
+    style="
     color: white;
     font-weight: bold;
-    font-size: 18px;
-    font-family: inherit;"
+    font-size: 47px;
+    letter-spacing: 3px;
+    font-family: Bangers;"
   >
     WE ARE OUTSTANDING
   </a>
@@ -21,4 +25,5 @@
   </a>
   <a class="nav-link" mat-tab-link> LOG IN </a>
   <a class="nav-link" mat-tab-link> LOG OUT </a>
+</div>
 </nav>
