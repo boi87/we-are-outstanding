@@ -1,4 +1,7 @@
-<nav mat-tab-nav-bar>
+<nav
+  mat-tab-nav-bar
+  style="margin: -1% -1% -16px -1%; background-color: #2f3133;"
+>
   <a
     mat-tab-link
     [routerLink]="['/home']"
@@ -10,8 +13,12 @@
   >
     WE ARE OUTSTANDING
   </a>
-  <a mat-tab-link [routerLink]="['/new-review']"> ADD REVIEW </a>
-  <a mat-tab-link [routerLink]="['reviews']"> READ REVIEWS </a>
-  <a mat-tab-link> LOG IN </a>
-  <a mat-tab-link> LOG OUT </a>
+  <a class="nav-link" mat-tab-link [routerLink]="['/new-review']">
+    ADD REVIEW
+  </a>
+  <a class="nav-link" mat-tab-link [routerLink]="['reviews']">
+    READ REVIEWS
+  </a>
+  <a class="nav-link" mat-tab-link> LOG IN </a>
+  <a class="nav-link" mat-tab-link> LOG OUT </a>
 </nav>
