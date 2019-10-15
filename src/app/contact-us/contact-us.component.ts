@@ -43,8 +43,12 @@ export class ContactUsComponent implements OnInit {
         title: `Your message has been submitted!`,
         type: 'success'
       });
-    }, 300);
-    this.loading = false;
-    this.contactForm.reset();
+
+      this.loading = false;
+      this.contactForm.reset();
+      this.contactForm.markAsUntouched();
+      this.contactForm.markAsPristine();
+
+    }, 500);
   }
 }
