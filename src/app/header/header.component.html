@@ -3,7 +3,6 @@
   style="margin: -1% -1% -16px -1%; background-color: #2f3133;"
 >
 
-  <div style="display: flex">
   <a
     mat-tab-link
     [routerLink]="['/home']"
@@ -17,13 +16,20 @@
   >
     WE ARE OUTSTANDING
   </a>
+  <div>
   <a class="nav-link" mat-tab-link [routerLink]="['/new-review']">
     ADD REVIEW
   </a>
+
   <a class="nav-link" mat-tab-link [routerLink]="['reviews']">
     READ REVIEWS
   </a>
+  </div>
+
+  <div>
+
   <a class="nav-link" mat-tab-link> LOG IN </a>
   <a class="nav-link" mat-tab-link> LOG OUT </a>
-</div>
+  </div>
+
 </nav>

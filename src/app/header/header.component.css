@@ -7,3 +7,8 @@
 a:hover {
   background-color: #1a1b1c;
 }
+
+/deep/ div.mat-tab-links {
+  display: flex;
+  justify-content: space-between;
+}
